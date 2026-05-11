@@ -110,6 +110,8 @@ Start command: gunicorn app:app --workers 1 --threads 8 --timeout 120 --bind 0.0
 Health check path: /healthz
 ```
 
+The included `start.sh` runs the same Gunicorn command and prints the port on startup.
+
 Use one Gunicorn worker because ChiGrid currently stores lobbies in app memory. Multiple workers would create separate lobby lists.
 
 Cheapest practical choice:
