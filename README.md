@@ -1,43 +1,40 @@
 # ChiGrid
 
-ChiGrid is an interactive city-learning game designed to help users become mentally fluent in cities before living in or visiting them.
+ChiGrid is a Flask + Leaflet.js city-learning game for building real-world Chicago map knowledge.
 
-Starting with Chicago, the project combines interactive maps, CTA transit systems, neighborhoods, landmarks, and navigation-based challenges to teach real-world city orientation and transit knowledge.
+Starting with Chicago, the project combines interactive maps, neighborhoods, landmarks, and navigation-style challenges. The long-term goal is to teach how cities work through landmarks, transit systems, neighborhoods, and real-world orientation rather than memorization alone.
 
-## Goals
+## Current Features
 
-* Learn Chicago’s grid system
-* Memorize neighborhoods and landmarks
-* Understand CTA train and bus routes
-* Improve real-world navigation skills
-* Build mental maps of major cities
+- Interactive Chicago map.
+- 200-location Chicago landmark dataset.
+- Public and private multiplayer lobbies.
+- Private lobbies use a 7 digit join code.
+- Each lobby supports up to 6 players.
+- Host-controlled "Let's Go" start.
+- 20 shared locations per match.
+- Players who finish early wait until everyone completes all 20.
+- Distance scoring uses the haversine formula in miles.
+- Speed bonus rewards faster correct guesses.
 
 ## Planned Features
 
-* Interactive Chicago map
-* Landmark guessing game
-* CTA train overlays and station quizzes
-* Neighborhood recognition
-* Route-planning challenges
-* Transit-based navigation scenarios
-* Timed memory and orientation modes
-* Expansion to cities like New York City and Los Angeles
+- CTA train overlays and station quizzes.
+- Neighborhood recognition.
+- Route-planning challenges.
+- Transit-based navigation scenarios.
+- Timed memory and orientation modes.
+- Expansion to cities like New York City and Los Angeles.
 
-## Current Stack
+## Stack
 
-* Python
-* Flask
-* Leaflet.js
-* OpenStreetMap
+- Python
+- Flask
+- Leaflet.js
+- OpenStreetMap/CARTO no-label tiles
+- Vanilla JavaScript
 
-## Current Progress
-
-* Flask backend initialized
-* Interactive Chicago map working with Leaflet
-* Project structure created
-* Landmark dataset preparation started
-
-## Setup
+## Run Locally
 
 Clone the repository:
 
@@ -46,7 +43,7 @@ git clone git@github.com:infosecBrook/chigrid_game.git
 cd chigrid_game
 ```
 
-Create virtual environment:
+Create a virtual environment:
 
 ```bash
 python -m venv venv
@@ -56,7 +53,7 @@ source venv/bin/activate
 Install dependencies:
 
 ```bash
-pip install flask
+pip install -r requirements.txt
 ```
 
 Run the app:
@@ -71,6 +68,96 @@ Open in browser:
 http://127.0.0.1:5000
 ```
 
-## Vision
+By default the app listens on `0.0.0.0:5000`, which means other devices can reach it if your network allows the connection.
 
-The long-term goal is to create a game-like system that teaches users how cities “work” through landmarks, transit systems, neighborhoods, and real-world navigation scenarios rather than traditional memorization.
+Useful run options:
+
+```bash
+PORT=8000 python app.py
+```
+
+```bash
+HOST=127.0.0.1 FLASK_DEBUG=1 python app.py
+```
+
+## Playing With Friends
+
+For people outside your home network, you need one of these:
+
+- A tunnel service, such as Cloudflare Tunnel or ngrok, pointed at `http://localhost:5000`.
+- Port forwarding on your router from a public port to this computer's port `5000`.
+- A deployed server or VPS running this Flask app behind a real domain.
+
+Keep one Python process running for a game session. Lobbies are stored in memory, so they reset when the server restarts.
+
+## Deploy On Render
+
+This repo includes:
+
+- `requirements.txt` for Python dependencies.
+- `Procfile` for a production Gunicorn start command.
+- `render.yaml` for Render blueprint deployment.
+- `Dockerfile` for Docker-based hosts such as Fly.io.
+- `fly.example.toml` for a low-cost Fly.io setup.
+- `/healthz` for host health checks.
+
+Recommended Render settings if you create the service manually:
+
+```text
+Runtime: Python
+Build command: pip install -r requirements.txt
+Start command: gunicorn app:app --workers 1 --threads 8 --timeout 120 --bind 0.0.0.0:$PORT
+Health check path: /healthz
+```
+
+Use one Gunicorn worker because ChiGrid currently stores lobbies in app memory. Multiple workers would create separate lobby lists.
+
+Cheapest practical choice:
+
+- Free Render web service for testing and casual games.
+- Paid Render Starter web service when you want the app to stay awake reliably during planned games.
+
+After deployment, add your custom domain in Render and point your DNS records to the values Render gives you. Render provides managed HTTPS certificates.
+
+## Deploy On Fly.io
+
+Fly.io is a good low-cost option if you want the app to stay running on one tiny machine.
+
+```bash
+cp fly.example.toml fly.toml
+```
+
+Edit `fly.toml` and change:
+
+```text
+app = "change-me-chigrid"
+```
+
+to a unique app name.
+
+Then deploy:
+
+```bash
+fly launch --no-deploy
+fly deploy
+```
+
+Keep `min_machines_running = 1` and `auto_stop_machines = false` for multiplayer sessions. That keeps the in-memory lobby state alive.
+
+## How It Works
+
+- Flask serves the main page at `/`.
+- Flask serves the landmark dataset at `/api/locations`.
+- Flask keeps lightweight public/private lobbies in memory while the server is running.
+- Public lobbies appear in the join list.
+- Private lobbies can be joined with a 7 digit code.
+- Each lobby allows up to 6 players.
+- The lobby host starts the match with the "Let's Go" button.
+- A match uses the same 20 locations for everyone in the lobby.
+- Players who finish early wait until everyone completes all 20 locations.
+- `static/game.js` handles the lobby UI, map clicks, scoring, and match flow.
+- The location data lives in `data/locations.json` and is the source of truth for the game.
+
+## CI/CD
+
+Render, Railway, and Fly.io can all deploy automatically from GitHub when changes are pushed to the connected branch. Keep the app on one running instance unless lobby state is moved out of memory into a shared store such as Redis or a database.

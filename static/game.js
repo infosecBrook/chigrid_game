@@ -2,7 +2,481 @@ const chicagoCenter = [41.8781, -87.6298];
 
 const map = L.map("map").setView(chicagoCenter, 11);
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
     maxZoom: 19,
-    attribution: "&copy; OpenStreetMap contributors"
+    attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
 }).addTo(map);
+
+const elements = {
+    lobbyScreen: document.getElementById("lobby-screen"),
+    lobbyHome: document.getElementById("lobby-home"),
+    createView: document.getElementById("create-view"),
+    joinView: document.getElementById("join-view"),
+    waitingView: document.getElementById("waiting-view"),
+    matchFinishedView: document.getElementById("match-finished-view"),
+    showCreate: document.getElementById("show-create"),
+    showJoin: document.getElementById("show-join"),
+    createPublic: document.getElementById("create-public"),
+    createPrivate: document.getElementById("create-private"),
+    publicLobbies: document.getElementById("public-lobbies"),
+    privateCode: document.getElementById("private-code"),
+    joinPrivate: document.getElementById("join-private"),
+    lobbyTitle: document.getElementById("lobby-title"),
+    lobbyCodeLine: document.getElementById("lobby-code-line"),
+    lobbyPlayers: document.getElementById("lobby-players"),
+    lobbyMessage: document.getElementById("lobby-message"),
+    lobbyStatus: document.getElementById("lobby-status"),
+    startGame: document.getElementById("start-game"),
+    hostWaitingNote: document.getElementById("host-waiting-note"),
+    matchFinishedTitle: document.getElementById("match-finished-title"),
+    matchFinishedMessage: document.getElementById("match-finished-message"),
+    matchResults: document.getElementById("match-results"),
+    prompt: document.getElementById("prompt"),
+    category: document.getElementById("category"),
+    result: document.getElementById("result"),
+    nextButton: document.getElementById("next-location"),
+    totalScore: document.getElementById("total-score"),
+    roundsPlayed: document.getElementById("rounds-played"),
+    averageDistance: document.getElementById("average-distance")
+};
+
+let currentLobby = null;
+let lobbyPollTimer = null;
+let matchRounds = [];
+let currentLocation = null;
+let currentRoundIndex = 0;
+let roundStartedAt = 0;
+let canGuess = false;
+let guessMarker = null;
+let answerMarker = null;
+let answerLine = null;
+let totalScore = 0;
+let totalDistance = 0;
+let gameStarted = false;
+let playerFinished = false;
+
+const playerId = getOrCreatePlayerId();
+const playerName = getOrCreatePlayerName();
+
+const guessIcon = L.divIcon({
+    className: "guess-marker",
+    html: "<span></span>",
+    iconSize: [20, 20],
+    iconAnchor: [10, 10]
+});
+
+const answerIcon = L.divIcon({
+    className: "answer-marker",
+    html: "<span></span>",
+    iconSize: [24, 24],
+    iconAnchor: [12, 12]
+});
+
+function getOrCreatePlayerId() {
+    let id = localStorage.getItem("chigridPlayerId");
+
+    if (!id) {
+        id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
+        localStorage.setItem("chigridPlayerId", id);
+    }
+
+    return id;
+}
+
+function getOrCreatePlayerName() {
+    let name = localStorage.getItem("chigridPlayerName");
+
+    if (!name) {
+        name = `Player ${Math.floor(1000 + Math.random() * 9000)}`;
+        localStorage.setItem("chigridPlayerName", name);
+    }
+
+    return name;
+}
+
+function showLobbyView(view) {
+    [elements.lobbyHome, elements.createView, elements.joinView, elements.waitingView, elements.matchFinishedView].forEach((section) => {
+        section.classList.add("hidden");
+    });
+
+    view.classList.remove("hidden");
+    setLobbyMessage("");
+}
+
+async function createLobby(visibility) {
+    const lobby = await postJson("/api/lobbies", {
+        visibility,
+        playerId,
+        playerName
+    });
+
+    enterLobby(lobby);
+}
+
+async function loadPublicLobbies() {
+    try {
+        const response = await fetch("/api/lobbies/public");
+        const lobbies = await response.json();
+
+        elements.publicLobbies.innerHTML = "";
+
+        if (lobbies.length === 0) {
+            elements.publicLobbies.innerHTML = `<p class="empty-state">No public games yet.</p>`;
+            return;
+        }
+
+        lobbies.forEach((lobby) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "lobby-row";
+            button.textContent = `Public game ${lobby.code} (${lobby.playerCount}/${lobby.maxPlayers})`;
+            button.addEventListener("click", () => joinLobby(lobby.code));
+            elements.publicLobbies.appendChild(button);
+        });
+    } catch (error) {
+        setLobbyMessage("Could not load public games.");
+        console.error(error);
+    }
+}
+
+async function joinLobby(code) {
+    const cleanCode = String(code).replace(/\D/g, "").slice(0, 7);
+
+    if (cleanCode.length !== 7) {
+        setLobbyMessage("Enter a 7 digit private code.");
+        return;
+    }
+
+    const lobby = await postJson("/api/lobbies/join", {
+        code: cleanCode,
+        playerId,
+        playerName
+    });
+
+    enterLobby(lobby);
+}
+
+async function startLobbyGame() {
+    if (!currentLobby) return;
+
+    const lobby = await postJson(`/api/lobbies/${currentLobby.code}/start`, {
+        playerId
+    });
+
+    renderLobby(lobby);
+}
+
+async function postJson(url, body) {
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || "Request failed.");
+    }
+
+    return data;
+}
+
+function enterLobby(lobby) {
+    currentLobby = lobby;
+    showLobbyView(elements.waitingView);
+    renderLobby(lobby);
+    startLobbyPolling();
+}
+
+function renderLobby(lobby) {
+    currentLobby = lobby;
+
+    if (lobby.status === "playing" && !gameStarted) {
+        launchMatch(lobby);
+    }
+
+    if (playerFinished) {
+        renderFinishedScreen(lobby);
+    }
+
+    elements.lobbyTitle.textContent = `${capitalize(lobby.visibility)} Game`;
+    elements.lobbyCodeLine.textContent = lobby.visibility === "private"
+        ? `Private code: ${lobby.code}`
+        : `Public lobby code: ${lobby.code}`;
+
+    renderPlayerList(lobby.progress.length ? lobby.progress : lobby.players);
+
+    const isHost = lobby.hostId === playerId;
+    elements.startGame.classList.toggle("hidden", !isHost || lobby.status !== "waiting");
+    elements.hostWaitingNote.textContent = isHost
+        ? "Wait for everyone to join, then start the match."
+        : "Waiting for the host to click Let's Go.";
+
+    elements.lobbyStatus.classList.remove("hidden");
+    elements.lobbyStatus.textContent =
+        `${capitalize(lobby.visibility)} lobby ${lobby.code} - ${lobby.playerCount}/${lobby.maxPlayers} players - ${capitalize(lobby.status)}`;
+}
+
+function renderPlayerList(players) {
+    elements.lobbyPlayers.innerHTML = "";
+    players.forEach((player) => {
+        const item = document.createElement("div");
+        const progress = player.roundsDone !== undefined ? ` - ${player.roundsDone}/20` : "";
+        item.textContent = `${player.name}${progress}`;
+        elements.lobbyPlayers.appendChild(item);
+    });
+}
+
+function startLobbyPolling() {
+    stopLobbyPolling();
+
+    lobbyPollTimer = window.setInterval(async () => {
+        if (!currentLobby) return;
+
+        try {
+            const response = await fetch(`/api/lobbies/${currentLobby.code}`);
+            const lobby = await response.json();
+
+            if (response.ok) {
+                renderLobby(lobby);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }, 2000);
+}
+
+function stopLobbyPolling() {
+    if (lobbyPollTimer) {
+        window.clearInterval(lobbyPollTimer);
+        lobbyPollTimer = null;
+    }
+}
+
+function launchMatch(lobby) {
+    gameStarted = true;
+    matchRounds = lobby.rounds;
+    elements.lobbyScreen.classList.add("hidden");
+    map.invalidateSize();
+    startRound(0);
+}
+
+function startRound(index) {
+    clearRoundMarkers();
+
+    currentRoundIndex = index;
+    currentLocation = matchRounds[currentRoundIndex];
+    canGuess = true;
+    roundStartedAt = performance.now();
+
+    elements.prompt.textContent = `Find: ${currentLocation.name}`;
+    elements.category.textContent = `Category: ${currentLocation.category || "Unknown"}`;
+    elements.result.textContent = "Click the map where you think this is.";
+    elements.nextButton.disabled = true;
+    elements.nextButton.textContent = currentRoundIndex === matchRounds.length - 1 ? "Finish Match" : "Next Location";
+    updateStats();
+}
+
+async function handleMapClick(event) {
+    if (!canGuess || !currentLocation) {
+        return;
+    }
+
+    canGuess = false;
+
+    const seconds = (performance.now() - roundStartedAt) / 1000;
+    const guessLatLng = event.latlng;
+    const answerLatLng = L.latLng(Number(currentLocation.lat), Number(currentLocation.lng));
+    const distance = getDistanceInMiles(guessLatLng.lat, guessLatLng.lng, answerLatLng.lat, answerLatLng.lng);
+    const roundScore = getScore(distance, seconds);
+
+    totalScore += roundScore;
+    totalDistance += distance;
+
+    guessMarker = L.marker(guessLatLng, { icon: guessIcon })
+        .addTo(map)
+        .bindPopup("Your guess");
+
+    answerMarker = L.marker(answerLatLng, { icon: answerIcon })
+        .addTo(map)
+        .bindPopup(currentLocation.name);
+
+    answerLine = L.polyline([guessLatLng, answerLatLng], {
+        color: "#00a1de",
+        weight: 4,
+        opacity: 0.85,
+        dashArray: "8 8"
+    }).addTo(map);
+
+    map.fitBounds(answerLine.getBounds(), {
+        padding: [80, 80],
+        maxZoom: 14
+    });
+
+    updateStats();
+    showRoundResult(distance, seconds, roundScore);
+    elements.nextButton.disabled = false;
+
+    try {
+        const lobby = await postJson(`/api/lobbies/${currentLobby.code}/submit`, {
+            playerId,
+            roundIndex: currentRoundIndex,
+            distance,
+            seconds,
+            score: roundScore
+        });
+        renderLobby(lobby);
+    } catch (error) {
+        elements.result.textContent = error.message;
+        console.error(error);
+    }
+}
+
+function goToNextRound() {
+    if (canGuess || !gameStarted) return;
+
+    if (currentRoundIndex < matchRounds.length - 1) {
+        startRound(currentRoundIndex + 1);
+        return;
+    }
+
+    playerFinished = true;
+    canGuess = false;
+    elements.lobbyScreen.classList.remove("hidden");
+    renderFinishedScreen(currentLobby);
+}
+
+function renderFinishedScreen(lobby) {
+    showLobbyView(elements.matchFinishedView);
+
+    if (lobby.status === "finished") {
+        elements.matchFinishedTitle.textContent = "Final Results";
+        elements.matchFinishedMessage.textContent = "Everyone finished the 20-location match.";
+    } else if (lobby.playerCount <= 1) {
+        elements.matchFinishedTitle.textContent = "Match Complete";
+        elements.matchFinishedMessage.textContent = "You finished all 20 locations.";
+    } else {
+        elements.matchFinishedTitle.textContent = "Waiting for everyone";
+        elements.matchFinishedMessage.textContent = "You finished all 20 locations. Results unlock when the whole lobby is done.";
+    }
+
+    elements.matchResults.innerHTML = "";
+    [...lobby.progress]
+        .sort((a, b) => b.totalScore - a.totalScore)
+        .forEach((player, index) => {
+            const item = document.createElement("div");
+            const distance = player.averageDistance === null ? "--" : `${player.averageDistance} mi avg`;
+            item.textContent = `${index + 1}. ${player.name} - ${player.totalScore} pts - ${player.roundsDone}/20 - ${distance}`;
+            elements.matchResults.appendChild(item);
+        });
+}
+
+function getDistanceInMiles(lat1, lng1, lat2, lng2) {
+    const earthRadiusMiles = 3958.8;
+    const dLat = toRadians(lat2 - lat1);
+    const dLng = toRadians(lng2 - lng1);
+
+    // Haversine measures distance over the earth's surface from two lat/lng points.
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRadians(lat1)) *
+            Math.cos(toRadians(lat2)) *
+            Math.sin(dLng / 2) *
+            Math.sin(dLng / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return earthRadiusMiles * c;
+}
+
+function toRadians(degrees) {
+    return degrees * (Math.PI / 180);
+}
+
+function getScore(distance, seconds) {
+    const distancePoints = getDistancePoints(distance);
+    const speedBonus = Math.max(0, Math.round(80 * (1 - Math.min(seconds, 60) / 60)));
+
+    return distancePoints + speedBonus;
+}
+
+function getDistancePoints(distance) {
+    if (distance < 0.25) return 100;
+    if (distance < 0.5) return 80;
+    if (distance < 1) return 60;
+    if (distance < 2) return 40;
+    if (distance < 5) return 20;
+    return 5;
+}
+
+function updateStats() {
+    const roundsDone = canGuess ? currentRoundIndex : currentRoundIndex + 1;
+    const average = roundsDone > 0 ? `${(totalDistance / roundsDone).toFixed(2)} mi` : "--";
+
+    elements.totalScore.textContent = totalScore;
+    elements.roundsPlayed.textContent = gameStarted ? `${roundsDone}/20` : "0/20";
+    elements.averageDistance.textContent = average;
+}
+
+function showRoundResult(distance, seconds, roundScore) {
+    elements.result.innerHTML = `
+        <strong>${distance.toFixed(2)} miles away</strong>
+        <span>${roundScore} points in ${seconds.toFixed(1)} seconds</span>
+        <dl>
+            <dt>Answer</dt>
+            <dd>${escapeHtml(currentLocation.name)}</dd>
+            <dt>Neighborhood</dt>
+            <dd>${escapeHtml(currentLocation.neighborhood || "Unknown")}</dd>
+            <dt>Streets</dt>
+            <dd>${escapeHtml(currentLocation.streets || "Unknown")}</dd>
+            <dt>Category</dt>
+            <dd>${escapeHtml(currentLocation.category || "Unknown")}</dd>
+        </dl>
+    `;
+}
+
+function clearRoundMarkers() {
+    [guessMarker, answerMarker, answerLine].forEach((layer) => {
+        if (layer) {
+            map.removeLayer(layer);
+        }
+    });
+
+    guessMarker = null;
+    answerMarker = null;
+    answerLine = null;
+}
+
+function capitalize(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function setLobbyMessage(message) {
+    elements.lobbyMessage.textContent = message;
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+map.on("click", handleMapClick);
+elements.nextButton.addEventListener("click", goToNextRound);
+elements.showCreate.addEventListener("click", () => showLobbyView(elements.createView));
+elements.showJoin.addEventListener("click", () => {
+    showLobbyView(elements.joinView);
+    loadPublicLobbies();
+});
+elements.createPublic.addEventListener("click", () => createLobby("public").catch((error) => setLobbyMessage(error.message)));
+elements.createPrivate.addEventListener("click", () => createLobby("private").catch((error) => setLobbyMessage(error.message)));
+elements.joinPrivate.addEventListener("click", () => joinLobby(elements.privateCode.value).catch((error) => setLobbyMessage(error.message)));
+elements.startGame.addEventListener("click", () => startLobbyGame().catch((error) => setLobbyMessage(error.message)));
+document.querySelectorAll("[data-back]").forEach((button) => {
+    button.addEventListener("click", () => showLobbyView(document.getElementById(button.dataset.back)));
+});

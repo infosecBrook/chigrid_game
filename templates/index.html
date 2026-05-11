@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChiGrid</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
@@ -8,9 +10,90 @@
 </head>
 <body>
 
+    <div id="lobby-screen" class="screen-overlay">
+        <div class="lobby-panel">
+            <h1>ChiGrid</h1>
+            <p class="subtitle">Create or join a Chicago map game.</p>
+
+            <section id="lobby-home" class="lobby-view">
+                <button id="show-create" type="button">Make a Game</button>
+                <button id="show-join" class="secondary-button" type="button">Join One</button>
+            </section>
+
+            <section id="create-view" class="lobby-view hidden">
+                <p class="label">Make a Game</p>
+                <div class="choice-row">
+                    <button id="create-public" type="button">Public</button>
+                    <button id="create-private" class="secondary-button" type="button">Private</button>
+                </div>
+                <button class="text-button" data-back="lobby-home" type="button">Back</button>
+            </section>
+
+            <section id="join-view" class="lobby-view hidden">
+                <p class="label">Join a Game</p>
+                <div id="public-lobbies" class="public-lobbies"></div>
+
+                <label for="private-code">Private code</label>
+                <div class="join-code-row">
+                    <input id="private-code" maxlength="7" inputmode="numeric" placeholder="1234567">
+                    <button id="join-private" type="button">Join</button>
+                </div>
+
+                <button class="text-button" data-back="lobby-home" type="button">Back</button>
+            </section>
+
+            <section id="waiting-view" class="lobby-view hidden">
+                <p class="label">Lobby</p>
+                <h2 id="lobby-title">Waiting for players</h2>
+                <p id="lobby-code-line"></p>
+                <div id="lobby-players" class="player-list"></div>
+                <button id="start-game" type="button">Let's Go</button>
+                <p id="host-waiting-note" class="empty-state"></p>
+            </section>
+
+            <section id="match-finished-view" class="lobby-view hidden">
+                <p class="label">Match</p>
+                <h2 id="match-finished-title">Waiting for everyone</h2>
+                <p id="match-finished-message"></p>
+                <div id="match-results" class="player-list"></div>
+            </section>
+
+            <p id="lobby-message" class="lobby-message"></p>
+        </div>
+    </div>
+
     <div id="sidebar">
         <h1>ChiGrid</h1>
-        <p>Chicago map trainer</p>
+        <p class="subtitle">Chicago map trainer</p>
+
+        <section id="lobby-status" class="lobby-status hidden"></section>
+
+        <section class="game-card">
+            <p class="label">Current Target</p>
+            <h2 id="prompt">Loading locations...</h2>
+            <p id="category">Category: --</p>
+        </section>
+
+        <section class="stats-grid" aria-label="Game stats">
+            <div>
+                <span class="label">Score</span>
+                <strong id="total-score">0</strong>
+            </div>
+            <div>
+                <span class="label">Rounds</span>
+                <strong id="rounds-played">0</strong>
+            </div>
+            <div>
+                <span class="label">Avg Distance</span>
+                <strong id="average-distance">--</strong>
+            </div>
+        </section>
+
+        <section id="result" class="result-panel">
+            Click the map where you think the landmark is.
+        </section>
+
+        <button id="next-location" type="button" disabled>Next Location</button>
     </div>
 
     <div id="map"></div>
