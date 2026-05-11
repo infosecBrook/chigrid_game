@@ -1,0 +1,1602 @@
+[
+  {
+    "name": "Wrigley Field",
+    "category": "sports",
+    "neighborhood": "Lakeview",
+    "streets": "Addison & Clark",
+    "lat": 41.9484,
+    "lng": -87.6553
+  },
+  {
+    "name": "United Center",
+    "category": "sports",
+    "neighborhood": "Near West Side",
+    "streets": "Madison & Damen",
+    "lat": 41.8807,
+    "lng": -87.6742
+  },
+  {
+    "name": "Soldier Field",
+    "category": "sports",
+    "neighborhood": "Museum Campus",
+    "streets": "Museum Campus Dr & McFetridge",
+    "lat": 41.8623,
+    "lng": -87.6167
+  },
+  {
+    "name": "Guaranteed Rate Field",
+    "category": "sports",
+    "neighborhood": "Bridgeport",
+    "streets": "35th & Shields",
+    "lat": 41.83,
+    "lng": -87.6338
+  },
+  {
+    "name": "Chicago Theatre",
+    "category": "theatre",
+    "neighborhood": "Loop",
+    "streets": "State & Lake",
+    "lat": 41.8855,
+    "lng": -87.6272
+  },
+  {
+    "name": "Art Institute of Chicago",
+    "category": "museum",
+    "neighborhood": "Loop",
+    "streets": "Michigan & Adams",
+    "lat": 41.8796,
+    "lng": -87.6237
+  },
+  {
+    "name": "Navy Pier",
+    "category": "tourist attraction",
+    "neighborhood": "Streeterville",
+    "streets": "Grand & Navy Pier",
+    "lat": 41.8917,
+    "lng": -87.6078
+  },
+  {
+    "name": "Cloud Gate",
+    "category": "landmark",
+    "neighborhood": "Loop",
+    "streets": "Michigan & Randolph",
+    "lat": 41.8827,
+    "lng": -87.6233
+  },
+  {
+    "name": "Willis Tower",
+    "category": "skyscraper",
+    "neighborhood": "Loop",
+    "streets": "Jackson & Wacker",
+    "lat": 41.8789,
+    "lng": -87.6359
+  },
+  {
+    "name": "John Hancock Center",
+    "category": "skyscraper",
+    "neighborhood": "Gold Coast",
+    "streets": "Michigan & Delaware",
+    "lat": 41.8988,
+    "lng": -87.6233
+  },
+  {
+    "name": "River Tap 11",
+    "category": "beach",
+    "neighborhood": "Uptown",
+    "streets": "Armitage & Racine",
+    "lat": 41.761861,
+    "lng": -87.792326
+  },
+  {
+    "name": "Union Lounge 12",
+    "category": "gallery",
+    "neighborhood": "River North",
+    "streets": "Clark & Diversey",
+    "lat": 41.748109,
+    "lng": -87.757182
+  },
+  {
+    "name": "Corner Tap 13",
+    "category": "diner",
+    "neighborhood": "Lakeview",
+    "streets": "California & Milwaukee",
+    "lat": 41.845856,
+    "lng": -87.698714
+  },
+  {
+    "name": "Blue Tap 14",
+    "category": "theatre",
+    "neighborhood": "Old Town",
+    "streets": "Randolph & Morgan",
+    "lat": 41.803361,
+    "lng": -87.761865
+  },
+  {
+    "name": "Old House 15",
+    "category": "music venue",
+    "neighborhood": "Gold Coast",
+    "streets": "Ashland & Division",
+    "lat": 41.827694,
+    "lng": -87.727132
+  },
+  {
+    "name": "Blue Hall 16",
+    "category": "sports bar",
+    "neighborhood": "Ravenswood",
+    "streets": "Ashland & Division",
+    "lat": 42.011935,
+    "lng": -87.717796
+  },
+  {
+    "name": "Union Bar 17",
+    "category": "arcade",
+    "neighborhood": "Roscoe Village",
+    "streets": "North & Wells",
+    "lat": 41.931372,
+    "lng": -87.807627
+  },
+  {
+    "name": "Green Bar 18",
+    "category": "music venue",
+    "neighborhood": "Uptown",
+    "streets": "Ashland & Division",
+    "lat": 41.834038,
+    "lng": -87.697579
+  },
+  {
+    "name": "Metro Club 19",
+    "category": "arcade",
+    "neighborhood": "Bucktown",
+    "streets": "North & Wells",
+    "lat": 41.921053,
+    "lng": -87.630509
+  },
+  {
+    "name": "Lake Corner 20",
+    "category": "theatre",
+    "neighborhood": "Ravenswood",
+    "streets": "Armitage & Racine",
+    "lat": 41.769021,
+    "lng": -87.717547
+  },
+  {
+    "name": "Union Kitchen 21",
+    "category": "bakery",
+    "neighborhood": "River North",
+    "streets": "Armitage & Racine",
+    "lat": 41.966541,
+    "lng": -87.602638
+  },
+  {
+    "name": "Lincoln Social 22",
+    "category": "music venue",
+    "neighborhood": "Lakeview",
+    "streets": "Chicago & Michigan",
+    "lat": 41.98291,
+    "lng": -87.735037
+  },
+  {
+    "name": "Uptown Depot 23",
+    "category": "sports bar",
+    "neighborhood": "Logan Square",
+    "streets": "Western & Chicago",
+    "lat": 41.761889,
+    "lng": -87.618853
+  },
+  {
+    "name": "Union Social 24",
+    "category": "gallery",
+    "neighborhood": "Roscoe Village",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.828599,
+    "lng": -87.550722
+  },
+  {
+    "name": "West Brewing 25",
+    "category": "rooftop",
+    "neighborhood": "West Loop",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.978331,
+    "lng": -87.778733
+  },
+  {
+    "name": "North Gallery 26",
+    "category": "music venue",
+    "neighborhood": "Gold Coast",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.898767,
+    "lng": -87.693627
+  },
+  {
+    "name": "Blue Room 27",
+    "category": "restaurant",
+    "neighborhood": "Wicker Park",
+    "streets": "California & Milwaukee",
+    "lat": 41.945263,
+    "lng": -87.612478
+  },
+  {
+    "name": "Old House 28",
+    "category": "club",
+    "neighborhood": "Old Town",
+    "streets": "Halsted & Fullerton",
+    "lat": 41.856117,
+    "lng": -87.56247
+  },
+  {
+    "name": "Blue Brewing 29",
+    "category": "theatre",
+    "neighborhood": "Streeterville",
+    "streets": "Ashland & Division",
+    "lat": 41.981156,
+    "lng": -87.73942
+  },
+  {
+    "name": "Magnolia Corner 30",
+    "category": "coffee shop",
+    "neighborhood": "Logan Square",
+    "streets": "Cermak & Halsted",
+    "lat": 41.948753,
+    "lng": -87.674368
+  },
+  {
+    "name": "Magnolia Tap 31",
+    "category": "bakery",
+    "neighborhood": "South Loop",
+    "streets": "Clark & Diversey",
+    "lat": 41.75356,
+    "lng": -87.721995
+  },
+  {
+    "name": "Golden Kitchen 32",
+    "category": "bar",
+    "neighborhood": "Uptown",
+    "streets": "Chicago & Michigan",
+    "lat": 42.004085,
+    "lng": -87.796874
+  },
+  {
+    "name": "Uptown Lounge 33",
+    "category": "diner",
+    "neighborhood": "Logan Square",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.917925,
+    "lng": -87.564351
+  },
+  {
+    "name": "North Social 34",
+    "category": "pizza",
+    "neighborhood": "Humboldt Park",
+    "streets": "Division & Ashland",
+    "lat": 42.009309,
+    "lng": -87.569193
+  },
+  {
+    "name": "South Bar 35",
+    "category": "bookstore",
+    "neighborhood": "Bucktown",
+    "streets": "Grand & Orleans",
+    "lat": 41.989884,
+    "lng": -87.698099
+  },
+  {
+    "name": "Green Kitchen 36",
+    "category": "music venue",
+    "neighborhood": "Hyde Park",
+    "streets": "Clark & Diversey",
+    "lat": 41.896493,
+    "lng": -87.757869
+  },
+  {
+    "name": "Green Tap 37",
+    "category": "music venue",
+    "neighborhood": "River North",
+    "streets": "Armitage & Racine",
+    "lat": 41.74022,
+    "lng": -87.811519
+  },
+  {
+    "name": "Old Lounge 38",
+    "category": "pizza",
+    "neighborhood": "Uptown",
+    "streets": "Western & Chicago",
+    "lat": 41.920693,
+    "lng": -87.762156
+  },
+  {
+    "name": "West Spot 39",
+    "category": "rooftop",
+    "neighborhood": "Uptown",
+    "streets": "Wacker & Madison",
+    "lat": 41.962249,
+    "lng": -87.768589
+  },
+  {
+    "name": "River Gallery 40",
+    "category": "arcade",
+    "neighborhood": "Old Town",
+    "streets": "Division & Ashland",
+    "lat": 41.860107,
+    "lng": -87.62315
+  },
+  {
+    "name": "River Hall 41",
+    "category": "bookstore",
+    "neighborhood": "Hyde Park",
+    "streets": "Ashland & Division",
+    "lat": 41.794597,
+    "lng": -87.768644
+  },
+  {
+    "name": "Logan Cafe 42",
+    "category": "gallery",
+    "neighborhood": "Lincoln Park",
+    "streets": "Western & Chicago",
+    "lat": 41.858788,
+    "lng": -87.583889
+  },
+  {
+    "name": "Lake Pizza 43",
+    "category": "diner",
+    "neighborhood": "Wicker Park",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.915643,
+    "lng": -87.674041
+  },
+  {
+    "name": "The Lounge 44",
+    "category": "landmark",
+    "neighborhood": "Lincoln Park",
+    "streets": "Division & Ashland",
+    "lat": 41.865692,
+    "lng": -87.762288
+  },
+  {
+    "name": "Lincoln Hall 45",
+    "category": "theatre",
+    "neighborhood": "Gold Coast",
+    "streets": "Clark & Diversey",
+    "lat": 42.015593,
+    "lng": -87.748395
+  },
+  {
+    "name": "Logan Bar 46",
+    "category": "gallery",
+    "neighborhood": "Ravenswood",
+    "streets": "Wacker & Madison",
+    "lat": 41.766439,
+    "lng": -87.739889
+  },
+  {
+    "name": "Chicago Spot 47",
+    "category": "diner",
+    "neighborhood": "River North",
+    "streets": "Randolph & Morgan",
+    "lat": 41.73715,
+    "lng": -87.662272
+  },
+  {
+    "name": "Magnolia Brewing 48",
+    "category": "theatre",
+    "neighborhood": "River North",
+    "streets": "Damen & Augusta",
+    "lat": 41.744033,
+    "lng": -87.769827
+  },
+  {
+    "name": "Corner Lounge 49",
+    "category": "landmark",
+    "neighborhood": "Gold Coast",
+    "streets": "Ashland & Division",
+    "lat": 42.002479,
+    "lng": -87.666188
+  },
+  {
+    "name": "Central Corner 50",
+    "category": "bar",
+    "neighborhood": "Humboldt Park",
+    "streets": "State & Randolph",
+    "lat": 41.845767,
+    "lng": -87.662408
+  },
+  {
+    "name": "Magnolia Station 51",
+    "category": "beach",
+    "neighborhood": "Lakeview",
+    "streets": "Randolph & Morgan",
+    "lat": 41.791606,
+    "lng": -87.713138
+  },
+  {
+    "name": "Golden Pizza 52",
+    "category": "bakery",
+    "neighborhood": "West Loop",
+    "streets": "Clark & Diversey",
+    "lat": 41.857486,
+    "lng": -87.550417
+  },
+  {
+    "name": "River Lounge 53",
+    "category": "diner",
+    "neighborhood": "Lakeview",
+    "streets": "Damen & Augusta",
+    "lat": 41.79956,
+    "lng": -87.56802
+  },
+  {
+    "name": "Lake Kitchen 54",
+    "category": "arcade",
+    "neighborhood": "Bridgeport",
+    "streets": "Halsted & Fullerton",
+    "lat": 41.851455,
+    "lng": -87.673331
+  },
+  {
+    "name": "Golden Corner 55",
+    "category": "pizza",
+    "neighborhood": "Loop",
+    "streets": "California & Milwaukee",
+    "lat": 41.809814,
+    "lng": -87.640885
+  },
+  {
+    "name": "West Social 56",
+    "category": "park",
+    "neighborhood": "Wicker Park",
+    "streets": "California & Milwaukee",
+    "lat": 41.766634,
+    "lng": -87.743926
+  },
+  {
+    "name": "South Station 57",
+    "category": "coffee shop",
+    "neighborhood": "Pilsen",
+    "streets": "Damen & Augusta",
+    "lat": 41.86656,
+    "lng": -87.575559
+  },
+  {
+    "name": "Chicago Lounge 58",
+    "category": "gallery",
+    "neighborhood": "Pilsen",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.721064,
+    "lng": -87.611798
+  },
+  {
+    "name": "Blue Club 59",
+    "category": "sports bar",
+    "neighborhood": "Ravenswood",
+    "streets": "Division & Ashland",
+    "lat": 41.888272,
+    "lng": -87.789794
+  },
+  {
+    "name": "West Room 60",
+    "category": "bar",
+    "neighborhood": "Bucktown",
+    "streets": "Chicago & Michigan",
+    "lat": 41.885758,
+    "lng": -87.703958
+  },
+  {
+    "name": "Chicago Bar 61",
+    "category": "arcade",
+    "neighborhood": "River North",
+    "streets": "Cermak & Halsted",
+    "lat": 41.783023,
+    "lng": -87.752627
+  },
+  {
+    "name": "River Market 62",
+    "category": "diner",
+    "neighborhood": "Old Town",
+    "streets": "Roosevelt & State",
+    "lat": 41.944843,
+    "lng": -87.570044
+  },
+  {
+    "name": "Green Club 63",
+    "category": "theatre",
+    "neighborhood": "Old Town",
+    "streets": "Clark & Diversey",
+    "lat": 41.773808,
+    "lng": -87.570388
+  },
+  {
+    "name": "Wicker Kitchen 64",
+    "category": "beach",
+    "neighborhood": "Lincoln Park",
+    "streets": "Ashland & Division",
+    "lat": 41.834763,
+    "lng": -87.809544
+  },
+  {
+    "name": "Uptown Kitchen 65",
+    "category": "coffee shop",
+    "neighborhood": "Andersonville",
+    "streets": "Cermak & Halsted",
+    "lat": 41.811557,
+    "lng": -87.605257
+  },
+  {
+    "name": "Green Kitchen 66",
+    "category": "restaurant",
+    "neighborhood": "Lakeview",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.818479,
+    "lng": -87.586625
+  },
+  {
+    "name": "Blue Market 67",
+    "category": "pizza",
+    "neighborhood": "Gold Coast",
+    "streets": "California & Milwaukee",
+    "lat": 41.819345,
+    "lng": -87.812548
+  },
+  {
+    "name": "Blue Club 68",
+    "category": "beach",
+    "neighborhood": "River North",
+    "streets": "Ashland & Division",
+    "lat": 41.898971,
+    "lng": -87.726664
+  },
+  {
+    "name": "Old Gallery 69",
+    "category": "pizza",
+    "neighborhood": "Wicker Park",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.989851,
+    "lng": -87.768679
+  },
+  {
+    "name": "Chicago Gallery 70",
+    "category": "restaurant",
+    "neighborhood": "Streeterville",
+    "streets": "California & Milwaukee",
+    "lat": 41.926057,
+    "lng": -87.566129
+  },
+  {
+    "name": "South Market 71",
+    "category": "gallery",
+    "neighborhood": "West Loop",
+    "streets": "Randolph & Morgan",
+    "lat": 41.906947,
+    "lng": -87.640885
+  },
+  {
+    "name": "River Bar 72",
+    "category": "pizza",
+    "neighborhood": "Bridgeport",
+    "streets": "Division & Ashland",
+    "lat": 41.817855,
+    "lng": -87.631754
+  },
+  {
+    "name": "Union Cafe 73",
+    "category": "coffee shop",
+    "neighborhood": "Old Town",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.923195,
+    "lng": -87.576243
+  },
+  {
+    "name": "Corner Spot 74",
+    "category": "club",
+    "neighborhood": "Gold Coast",
+    "streets": "California & Milwaukee",
+    "lat": 41.970118,
+    "lng": -87.737954
+  },
+  {
+    "name": "South Gallery 75",
+    "category": "bakery",
+    "neighborhood": "Andersonville",
+    "streets": "Grand & Orleans",
+    "lat": 41.852648,
+    "lng": -87.762301
+  },
+  {
+    "name": "Uptown Club 76",
+    "category": "music venue",
+    "neighborhood": "Bridgeport",
+    "streets": "Damen & Augusta",
+    "lat": 41.919156,
+    "lng": -87.6528
+  },
+  {
+    "name": "Lake Kitchen 77",
+    "category": "club",
+    "neighborhood": "Uptown",
+    "streets": "North & Wells",
+    "lat": 41.764206,
+    "lng": -87.807522
+  },
+  {
+    "name": "Uptown Corner 78",
+    "category": "music venue",
+    "neighborhood": "Andersonville",
+    "streets": "Division & Ashland",
+    "lat": 41.985841,
+    "lng": -87.664569
+  },
+  {
+    "name": "Lincoln Deli 79",
+    "category": "bookstore",
+    "neighborhood": "Uptown",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.916817,
+    "lng": -87.818503
+  },
+  {
+    "name": "River Gallery 80",
+    "category": "landmark",
+    "neighborhood": "Lincoln Park",
+    "streets": "Damen & Augusta",
+    "lat": 41.859365,
+    "lng": -87.6695
+  },
+  {
+    "name": "River Pizza 81",
+    "category": "museum",
+    "neighborhood": "Andersonville",
+    "streets": "Damen & Augusta",
+    "lat": 42.016368,
+    "lng": -87.659228
+  },
+  {
+    "name": "Logan Corner 82",
+    "category": "pizza",
+    "neighborhood": "Old Town",
+    "streets": "California & Milwaukee",
+    "lat": 41.853774,
+    "lng": -87.777027
+  },
+  {
+    "name": "Uptown Pizza 83",
+    "category": "beach",
+    "neighborhood": "Uptown",
+    "streets": "Western & Chicago",
+    "lat": 41.949744,
+    "lng": -87.679249
+  },
+  {
+    "name": "Green Social 84",
+    "category": "sports bar",
+    "neighborhood": "West Loop",
+    "streets": "Broadway & Lawrence",
+    "lat": 41.790348,
+    "lng": -87.729321
+  },
+  {
+    "name": "Union Lounge 85",
+    "category": "museum",
+    "neighborhood": "Logan Square",
+    "streets": "Armitage & Racine",
+    "lat": 41.834911,
+    "lng": -87.778743
+  },
+  {
+    "name": "South Lounge 86",
+    "category": "gallery",
+    "neighborhood": "Old Town",
+    "streets": "Randolph & Morgan",
+    "lat": 41.882783,
+    "lng": -87.707741
+  },
+  {
+    "name": "South Gallery 87",
+    "category": "bookstore",
+    "neighborhood": "Roscoe Village",
+    "streets": "Clark & Diversey",
+    "lat": 41.97702,
+    "lng": -87.613289
+  },
+  {
+    "name": "Lincoln Deli 88",
+    "category": "restaurant",
+    "neighborhood": "Bucktown",
+    "streets": "Broadway & Lawrence",
+    "lat": 41.946043,
+    "lng": -87.589569
+  },
+  {
+    "name": "Wicker Room 89",
+    "category": "diner",
+    "neighborhood": "Humboldt Park",
+    "streets": "Armitage & Racine",
+    "lat": 41.866469,
+    "lng": -87.746307
+  },
+  {
+    "name": "Uptown Tap 90",
+    "category": "bookstore",
+    "neighborhood": "Hyde Park",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.937254,
+    "lng": -87.593063
+  },
+  {
+    "name": "West Corner 91",
+    "category": "diner",
+    "neighborhood": "Loop",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.897568,
+    "lng": -87.64099
+  },
+  {
+    "name": "Lake Gallery 92",
+    "category": "museum",
+    "neighborhood": "Andersonville",
+    "streets": "Halsted & Fullerton",
+    "lat": 41.735085,
+    "lng": -87.717642
+  },
+  {
+    "name": "South Pizza 93",
+    "category": "bakery",
+    "neighborhood": "Hyde Park",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.803477,
+    "lng": -87.563175
+  },
+  {
+    "name": "Wicker Social 94",
+    "category": "music venue",
+    "neighborhood": "South Loop",
+    "streets": "Clark & Diversey",
+    "lat": 41.944707,
+    "lng": -87.805937
+  },
+  {
+    "name": "Metro Kitchen 95",
+    "category": "music venue",
+    "neighborhood": "River North",
+    "streets": "Clark & Diversey",
+    "lat": 42.004884,
+    "lng": -87.766173
+  },
+  {
+    "name": "The Corner 96",
+    "category": "museum",
+    "neighborhood": "Uptown",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.862068,
+    "lng": -87.789115
+  },
+  {
+    "name": "South Pizza 97",
+    "category": "beach",
+    "neighborhood": "Bucktown",
+    "streets": "Halsted & Fullerton",
+    "lat": 41.901768,
+    "lng": -87.559792
+  },
+  {
+    "name": "River Club 98",
+    "category": "club",
+    "neighborhood": "Wicker Park",
+    "streets": "Chicago & Michigan",
+    "lat": 41.727704,
+    "lng": -87.735772
+  },
+  {
+    "name": "Lincoln Depot 99",
+    "category": "coffee shop",
+    "neighborhood": "West Loop",
+    "streets": "Chicago & Michigan",
+    "lat": 41.927184,
+    "lng": -87.650645
+  },
+  {
+    "name": "River Bar 100",
+    "category": "park",
+    "neighborhood": "Roscoe Village",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.824161,
+    "lng": -87.704338
+  },
+  {
+    "name": "Metro Lounge 101",
+    "category": "pizza",
+    "neighborhood": "Hyde Park",
+    "streets": "Clark & Diversey",
+    "lat": 41.974873,
+    "lng": -87.597971
+  },
+  {
+    "name": "River Gallery 102",
+    "category": "arcade",
+    "neighborhood": "Andersonville",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.850646,
+    "lng": -87.621875
+  },
+  {
+    "name": "Blue Corner 103",
+    "category": "diner",
+    "neighborhood": "South Loop",
+    "streets": "Grand & Orleans",
+    "lat": 41.850672,
+    "lng": -87.622623
+  },
+  {
+    "name": "Blue Station 104",
+    "category": "landmark",
+    "neighborhood": "West Loop",
+    "streets": "Western & Chicago",
+    "lat": 41.984489,
+    "lng": -87.754157
+  },
+  {
+    "name": "Logan Spot 105",
+    "category": "bookstore",
+    "neighborhood": "Hyde Park",
+    "streets": "Clark & Diversey",
+    "lat": 41.868292,
+    "lng": -87.732246
+  },
+  {
+    "name": "Uptown Garden 106",
+    "category": "arcade",
+    "neighborhood": "Pilsen",
+    "streets": "Randolph & Morgan",
+    "lat": 41.803898,
+    "lng": -87.659038
+  },
+  {
+    "name": "Blue Room 107",
+    "category": "restaurant",
+    "neighborhood": "Streeterville",
+    "streets": "North & Wells",
+    "lat": 41.745684,
+    "lng": -87.62558
+  },
+  {
+    "name": "Uptown Room 108",
+    "category": "landmark",
+    "neighborhood": "South Loop",
+    "streets": "Wacker & Madison",
+    "lat": 41.854452,
+    "lng": -87.815344
+  },
+  {
+    "name": "Golden Kitchen 109",
+    "category": "bookstore",
+    "neighborhood": "Uptown",
+    "streets": "Broadway & Lawrence",
+    "lat": 41.919188,
+    "lng": -87.720364
+  },
+  {
+    "name": "Union Brewing 110",
+    "category": "arcade",
+    "neighborhood": "Old Town",
+    "streets": "California & Milwaukee",
+    "lat": 41.819237,
+    "lng": -87.630229
+  },
+  {
+    "name": "Blue Bar 111",
+    "category": "beach",
+    "neighborhood": "Uptown",
+    "streets": "Ashland & Division",
+    "lat": 41.936385,
+    "lng": -87.734802
+  },
+  {
+    "name": "Union Club 112",
+    "category": "coffee shop",
+    "neighborhood": "Lakeview",
+    "streets": "Wacker & Madison",
+    "lat": 41.80295,
+    "lng": -87.660812
+  },
+  {
+    "name": "Magnolia Corner 113",
+    "category": "club",
+    "neighborhood": "Wicker Park",
+    "streets": "North & Wells",
+    "lat": 41.808874,
+    "lng": -87.722562
+  },
+  {
+    "name": "Golden Tap 114",
+    "category": "diner",
+    "neighborhood": "Logan Square",
+    "streets": "Western & Chicago",
+    "lat": 41.733655,
+    "lng": -87.805278
+  },
+  {
+    "name": "Golden Cafe 115",
+    "category": "rooftop",
+    "neighborhood": "Wicker Park",
+    "streets": "Clark & Diversey",
+    "lat": 41.892219,
+    "lng": -87.693263
+  },
+  {
+    "name": "Logan Station 116",
+    "category": "theatre",
+    "neighborhood": "River North",
+    "streets": "Western & Chicago",
+    "lat": 42.002319,
+    "lng": -87.691013
+  },
+  {
+    "name": "Lake Depot 117",
+    "category": "rooftop",
+    "neighborhood": "West Loop",
+    "streets": "Chicago & Michigan",
+    "lat": 41.908834,
+    "lng": -87.805526
+  },
+  {
+    "name": "West Spot 118",
+    "category": "club",
+    "neighborhood": "West Loop",
+    "streets": "Armitage & Racine",
+    "lat": 41.755535,
+    "lng": -87.6136
+  },
+  {
+    "name": "Corner Corner 119",
+    "category": "landmark",
+    "neighborhood": "Streeterville",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.855154,
+    "lng": -87.700465
+  },
+  {
+    "name": "Central Gallery 120",
+    "category": "club",
+    "neighborhood": "Roscoe Village",
+    "streets": "Roosevelt & State",
+    "lat": 41.738069,
+    "lng": -87.560771
+  },
+  {
+    "name": "River Garden 121",
+    "category": "coffee shop",
+    "neighborhood": "Pilsen",
+    "streets": "State & Randolph",
+    "lat": 41.767117,
+    "lng": -87.77307
+  },
+  {
+    "name": "Lake Club 122",
+    "category": "restaurant",
+    "neighborhood": "Old Town",
+    "streets": "Grand & Orleans",
+    "lat": 41.926811,
+    "lng": -87.693124
+  },
+  {
+    "name": "Chicago Kitchen 123",
+    "category": "club",
+    "neighborhood": "Bridgeport",
+    "streets": "Grand & Orleans",
+    "lat": 41.741354,
+    "lng": -87.756976
+  },
+  {
+    "name": "Blue Spot 124",
+    "category": "coffee shop",
+    "neighborhood": "Old Town",
+    "streets": "Ashland & Division",
+    "lat": 41.883369,
+    "lng": -87.645139
+  },
+  {
+    "name": "Blue Cafe 125",
+    "category": "music venue",
+    "neighborhood": "River North",
+    "streets": "Halsted & Fullerton",
+    "lat": 41.957789,
+    "lng": -87.659338
+  },
+  {
+    "name": "Central Bar 126",
+    "category": "sports bar",
+    "neighborhood": "Wicker Park",
+    "streets": "Grand & Orleans",
+    "lat": 41.926603,
+    "lng": -87.631072
+  },
+  {
+    "name": "Blue Brewing 127",
+    "category": "diner",
+    "neighborhood": "South Loop",
+    "streets": "Grand & Orleans",
+    "lat": 41.744133,
+    "lng": -87.809238
+  },
+  {
+    "name": "Wicker Station 128",
+    "category": "beach",
+    "neighborhood": "Loop",
+    "streets": "State & Randolph",
+    "lat": 41.788677,
+    "lng": -87.637939
+  },
+  {
+    "name": "Central Spot 129",
+    "category": "restaurant",
+    "neighborhood": "Pilsen",
+    "streets": "Chicago & Michigan",
+    "lat": 41.73207,
+    "lng": -87.615807
+  },
+  {
+    "name": "Uptown Brewing 130",
+    "category": "sports bar",
+    "neighborhood": "Pilsen",
+    "streets": "Halsted & Fullerton",
+    "lat": 42.019084,
+    "lng": -87.702311
+  },
+  {
+    "name": "Uptown Lounge 131",
+    "category": "rooftop",
+    "neighborhood": "Bucktown",
+    "streets": "Division & Ashland",
+    "lat": 41.819993,
+    "lng": -87.639064
+  },
+  {
+    "name": "North Station 132",
+    "category": "gallery",
+    "neighborhood": "South Loop",
+    "streets": "Broadway & Lawrence",
+    "lat": 41.918775,
+    "lng": -87.711878
+  },
+  {
+    "name": "Union Hall 133",
+    "category": "sports bar",
+    "neighborhood": "West Loop",
+    "streets": "Randolph & Morgan",
+    "lat": 41.79572,
+    "lng": -87.788701
+  },
+  {
+    "name": "Lincoln Brewing 134",
+    "category": "restaurant",
+    "neighborhood": "Ravenswood",
+    "streets": "Grand & Orleans",
+    "lat": 41.843974,
+    "lng": -87.769353
+  },
+  {
+    "name": "Metro Corner 135",
+    "category": "rooftop",
+    "neighborhood": "Andersonville",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.781067,
+    "lng": -87.671711
+  },
+  {
+    "name": "Golden Pizza 136",
+    "category": "rooftop",
+    "neighborhood": "Wicker Park",
+    "streets": "Clark & Diversey",
+    "lat": 42.011944,
+    "lng": -87.655605
+  },
+  {
+    "name": "Green Club 137",
+    "category": "club",
+    "neighborhood": "Ravenswood",
+    "streets": "Clark & Diversey",
+    "lat": 41.885675,
+    "lng": -87.794834
+  },
+  {
+    "name": "River Pizza 138",
+    "category": "park",
+    "neighborhood": "Logan Square",
+    "streets": "Wacker & Madison",
+    "lat": 41.999796,
+    "lng": -87.741197
+  },
+  {
+    "name": "Blue Gallery 139",
+    "category": "rooftop",
+    "neighborhood": "South Loop",
+    "streets": "Armitage & Racine",
+    "lat": 41.857036,
+    "lng": -87.780947
+  },
+  {
+    "name": "South Corner 140",
+    "category": "pizza",
+    "neighborhood": "Logan Square",
+    "streets": "State & Randolph",
+    "lat": 41.802874,
+    "lng": -87.606698
+  },
+  {
+    "name": "Wicker Station 141",
+    "category": "pizza",
+    "neighborhood": "Pilsen",
+    "streets": "Clark & Diversey",
+    "lat": 41.804852,
+    "lng": -87.73939
+  },
+  {
+    "name": "Central Spot 142",
+    "category": "rooftop",
+    "neighborhood": "Logan Square",
+    "streets": "Grand & Orleans",
+    "lat": 41.881574,
+    "lng": -87.726817
+  },
+  {
+    "name": "Union Room 143",
+    "category": "bookstore",
+    "neighborhood": "Andersonville",
+    "streets": "Randolph & Morgan",
+    "lat": 41.980881,
+    "lng": -87.555191
+  },
+  {
+    "name": "Green Spot 144",
+    "category": "bookstore",
+    "neighborhood": "Uptown",
+    "streets": "Division & Ashland",
+    "lat": 41.733094,
+    "lng": -87.61893
+  },
+  {
+    "name": "Lincoln Depot 145",
+    "category": "museum",
+    "neighborhood": "South Loop",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.757874,
+    "lng": -87.559355
+  },
+  {
+    "name": "Old House 146",
+    "category": "sports bar",
+    "neighborhood": "Wicker Park",
+    "streets": "Damen & Augusta",
+    "lat": 41.993133,
+    "lng": -87.815856
+  },
+  {
+    "name": "West Gallery 147",
+    "category": "museum",
+    "neighborhood": "West Loop",
+    "streets": "Wacker & Madison",
+    "lat": 41.954458,
+    "lng": -87.748444
+  },
+  {
+    "name": "Corner Depot 148",
+    "category": "music venue",
+    "neighborhood": "Hyde Park",
+    "streets": "California & Milwaukee",
+    "lat": 41.834003,
+    "lng": -87.734501
+  },
+  {
+    "name": "Uptown Room 149",
+    "category": "bar",
+    "neighborhood": "Humboldt Park",
+    "streets": "State & Randolph",
+    "lat": 41.790431,
+    "lng": -87.635212
+  },
+  {
+    "name": "Golden Kitchen 150",
+    "category": "music venue",
+    "neighborhood": "Old Town",
+    "streets": "Ashland & Division",
+    "lat": 41.948111,
+    "lng": -87.629949
+  },
+  {
+    "name": "River Pizza 151",
+    "category": "theatre",
+    "neighborhood": "Bridgeport",
+    "streets": "Clark & Diversey",
+    "lat": 41.733797,
+    "lng": -87.605041
+  },
+  {
+    "name": "Golden Market 152",
+    "category": "arcade",
+    "neighborhood": "Old Town",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.793259,
+    "lng": -87.708746
+  },
+  {
+    "name": "North Club 153",
+    "category": "theatre",
+    "neighborhood": "West Loop",
+    "streets": "Roosevelt & State",
+    "lat": 41.981252,
+    "lng": -87.652678
+  },
+  {
+    "name": "Green Deli 154",
+    "category": "museum",
+    "neighborhood": "Uptown",
+    "streets": "Grand & Orleans",
+    "lat": 41.911371,
+    "lng": -87.695916
+  },
+  {
+    "name": "The Pizza 155",
+    "category": "club",
+    "neighborhood": "Ravenswood",
+    "streets": "Halsted & Fullerton",
+    "lat": 41.742159,
+    "lng": -87.564786
+  },
+  {
+    "name": "Central Bar 156",
+    "category": "gallery",
+    "neighborhood": "Pilsen",
+    "streets": "Grand & Orleans",
+    "lat": 41.973591,
+    "lng": -87.766211
+  },
+  {
+    "name": "Lincoln Deli 157",
+    "category": "park",
+    "neighborhood": "Uptown",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.891577,
+    "lng": -87.664801
+  },
+  {
+    "name": "Golden Tap 158",
+    "category": "bookstore",
+    "neighborhood": "Pilsen",
+    "streets": "Clark & Diversey",
+    "lat": 41.889779,
+    "lng": -87.634834
+  },
+  {
+    "name": "Chicago Corner 159",
+    "category": "rooftop",
+    "neighborhood": "Bridgeport",
+    "streets": "Armitage & Racine",
+    "lat": 41.902119,
+    "lng": -87.724873
+  },
+  {
+    "name": "South Corner 160",
+    "category": "beach",
+    "neighborhood": "Logan Square",
+    "streets": "Ashland & Division",
+    "lat": 41.991021,
+    "lng": -87.645488
+  },
+  {
+    "name": "Golden Pizza 161",
+    "category": "bar",
+    "neighborhood": "Roscoe Village",
+    "streets": "Cermak & Halsted",
+    "lat": 41.939708,
+    "lng": -87.795664
+  },
+  {
+    "name": "Golden Station 162",
+    "category": "gallery",
+    "neighborhood": "Lincoln Park",
+    "streets": "North & Wells",
+    "lat": 41.759648,
+    "lng": -87.67436
+  },
+  {
+    "name": "Metro Brewing 163",
+    "category": "pizza",
+    "neighborhood": "Pilsen",
+    "streets": "Halsted & Fullerton",
+    "lat": 41.797091,
+    "lng": -87.597334
+  },
+  {
+    "name": "Uptown Bar 164",
+    "category": "bakery",
+    "neighborhood": "Wicker Park",
+    "streets": "Grand & Orleans",
+    "lat": 42.008868,
+    "lng": -87.781996
+  },
+  {
+    "name": "Green Depot 165",
+    "category": "diner",
+    "neighborhood": "Bucktown",
+    "streets": "State & Randolph",
+    "lat": 41.957205,
+    "lng": -87.816242
+  },
+  {
+    "name": "Union House 166",
+    "category": "sports bar",
+    "neighborhood": "Bucktown",
+    "streets": "Western & Chicago",
+    "lat": 41.895368,
+    "lng": -87.597947
+  },
+  {
+    "name": "Metro House 167",
+    "category": "landmark",
+    "neighborhood": "South Loop",
+    "streets": "Clark & Diversey",
+    "lat": 41.905864,
+    "lng": -87.565344
+  },
+  {
+    "name": "Old Corner 168",
+    "category": "landmark",
+    "neighborhood": "West Loop",
+    "streets": "Grand & Orleans",
+    "lat": 41.992816,
+    "lng": -87.738409
+  },
+  {
+    "name": "Wicker House 169",
+    "category": "museum",
+    "neighborhood": "River North",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.811309,
+    "lng": -87.686991
+  },
+  {
+    "name": "River Kitchen 170",
+    "category": "diner",
+    "neighborhood": "Logan Square",
+    "streets": "63rd & Cottage Grove",
+    "lat": 41.856093,
+    "lng": -87.638969
+  },
+  {
+    "name": "Union Gallery 171",
+    "category": "museum",
+    "neighborhood": "Old Town",
+    "streets": "Ashland & Division",
+    "lat": 41.970108,
+    "lng": -87.653774
+  },
+  {
+    "name": "Blue Hall 172",
+    "category": "arcade",
+    "neighborhood": "Lakeview",
+    "streets": "Grand & Orleans",
+    "lat": 41.853409,
+    "lng": -87.75625
+  },
+  {
+    "name": "Metro House 173",
+    "category": "arcade",
+    "neighborhood": "Ravenswood",
+    "streets": "Cermak & Halsted",
+    "lat": 41.738165,
+    "lng": -87.745512
+  },
+  {
+    "name": "River Pizza 174",
+    "category": "music venue",
+    "neighborhood": "Lakeview",
+    "streets": "Roosevelt & State",
+    "lat": 42.011328,
+    "lng": -87.806344
+  },
+  {
+    "name": "Old Kitchen 175",
+    "category": "museum",
+    "neighborhood": "Roscoe Village",
+    "streets": "North & Wells",
+    "lat": 41.740583,
+    "lng": -87.613408
+  },
+  {
+    "name": "South Spot 176",
+    "category": "coffee shop",
+    "neighborhood": "Uptown",
+    "streets": "Randolph & Morgan",
+    "lat": 41.952311,
+    "lng": -87.607066
+  },
+  {
+    "name": "Corner Tap 177",
+    "category": "beach",
+    "neighborhood": "Logan Square",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.882065,
+    "lng": -87.604401
+  },
+  {
+    "name": "River Tap 178",
+    "category": "museum",
+    "neighborhood": "Loop",
+    "streets": "Cermak & Halsted",
+    "lat": 41.956995,
+    "lng": -87.755758
+  },
+  {
+    "name": "Old Tap 179",
+    "category": "theatre",
+    "neighborhood": "Pilsen",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.758028,
+    "lng": -87.706341
+  },
+  {
+    "name": "River Lounge 180",
+    "category": "rooftop",
+    "neighborhood": "Andersonville",
+    "streets": "Cermak & Halsted",
+    "lat": 41.873971,
+    "lng": -87.790555
+  },
+  {
+    "name": "Magnolia Kitchen 181",
+    "category": "bar",
+    "neighborhood": "Streeterville",
+    "streets": "Broadway & Lawrence",
+    "lat": 41.857413,
+    "lng": -87.559713
+  },
+  {
+    "name": "Chicago Deli 182",
+    "category": "bookstore",
+    "neighborhood": "Old Town",
+    "streets": "Ashland & Division",
+    "lat": 41.867081,
+    "lng": -87.574381
+  },
+  {
+    "name": "Lake Lounge 183",
+    "category": "bakery",
+    "neighborhood": "Humboldt Park",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.739705,
+    "lng": -87.745746
+  },
+  {
+    "name": "Central Room 184",
+    "category": "bakery",
+    "neighborhood": "Gold Coast",
+    "streets": "Roosevelt & State",
+    "lat": 41.879167,
+    "lng": -87.697497
+  },
+  {
+    "name": "Corner Gallery 185",
+    "category": "park",
+    "neighborhood": "Wicker Park",
+    "streets": "California & Milwaukee",
+    "lat": 41.936252,
+    "lng": -87.761944
+  },
+  {
+    "name": "Logan Kitchen 186",
+    "category": "gallery",
+    "neighborhood": "Hyde Park",
+    "streets": "Grand & Orleans",
+    "lat": 41.839619,
+    "lng": -87.623005
+  },
+  {
+    "name": "Old Gallery 187",
+    "category": "bakery",
+    "neighborhood": "Pilsen",
+    "streets": "Cermak & Halsted",
+    "lat": 42.006078,
+    "lng": -87.634558
+  },
+  {
+    "name": "Uptown Lounge 188",
+    "category": "music venue",
+    "neighborhood": "West Loop",
+    "streets": "State & Randolph",
+    "lat": 41.849563,
+    "lng": -87.618961
+  },
+  {
+    "name": "Metro Cafe 189",
+    "category": "diner",
+    "neighborhood": "River North",
+    "streets": "Chicago & Michigan",
+    "lat": 42.006987,
+    "lng": -87.668345
+  },
+  {
+    "name": "River Gallery 190",
+    "category": "arcade",
+    "neighborhood": "Old Town",
+    "streets": "Milwaukee & Damen",
+    "lat": 42.01052,
+    "lng": -87.657889
+  },
+  {
+    "name": "Metro House 191",
+    "category": "pizza",
+    "neighborhood": "Lakeview",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.917021,
+    "lng": -87.759454
+  },
+  {
+    "name": "River Market 192",
+    "category": "diner",
+    "neighborhood": "Bucktown",
+    "streets": "Ashland & Division",
+    "lat": 41.948782,
+    "lng": -87.664993
+  },
+  {
+    "name": "Wicker Room 193",
+    "category": "diner",
+    "neighborhood": "Loop",
+    "streets": "Roosevelt & State",
+    "lat": 41.998725,
+    "lng": -87.596046
+  },
+  {
+    "name": "Blue Tap 194",
+    "category": "theatre",
+    "neighborhood": "Pilsen",
+    "streets": "Broadway & Lawrence",
+    "lat": 41.996461,
+    "lng": -87.725224
+  },
+  {
+    "name": "North Cafe 195",
+    "category": "bookstore",
+    "neighborhood": "West Loop",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.942291,
+    "lng": -87.557611
+  },
+  {
+    "name": "Lake Brewing 196",
+    "category": "coffee shop",
+    "neighborhood": "Gold Coast",
+    "streets": "Division & Ashland",
+    "lat": 41.856094,
+    "lng": -87.777499
+  },
+  {
+    "name": "Golden Station 197",
+    "category": "music venue",
+    "neighborhood": "River North",
+    "streets": "Belmont & Sheffield",
+    "lat": 41.767223,
+    "lng": -87.653184
+  },
+  {
+    "name": "Lake Social 198",
+    "category": "sports bar",
+    "neighborhood": "Old Town",
+    "streets": "Wacker & Madison",
+    "lat": 41.902123,
+    "lng": -87.70817
+  },
+  {
+    "name": "South Brewing 199",
+    "category": "park",
+    "neighborhood": "Bucktown",
+    "streets": "Division & Ashland",
+    "lat": 41.753267,
+    "lng": -87.636881
+  },
+  {
+    "name": "Central Deli 200",
+    "category": "pizza",
+    "neighborhood": "Bridgeport",
+    "streets": "Milwaukee & Damen",
+    "lat": 41.786156,
+    "lng": -87.5542
+  }
+]
