@@ -1,6 +1,8 @@
 import json
+import math
 import os
 import random
+import secrets
 import string
 from pathlib import Path
 
@@ -10,7 +12,9 @@ app = Flask(__name__)
 DATA_FILE = Path(__file__).parent / "data" / "locations.json"
 MAX_LOBBY_PLAYERS = 6
 MATCH_ROUNDS = 20
+LOBBY_CODE_LENGTH = 7
 lobbies = {}
+sessions = {}
 
 @app.route("/")
 def home():
@@ -23,6 +27,27 @@ def healthz():
 @app.route("/api/locations")
 def locations():
     return jsonify(load_locations())
+
+@app.post("/api/session")
+def create_session():
+    data = request.get_json(silent=True) or {}
+    token = str(data.get("sessionToken", "")).strip()
+    player = sessions.get(token)
+
+    if not player:
+        token = secrets.token_urlsafe(32)
+        player = {
+            "id": secrets.token_urlsafe(16),
+            "name": clean_player_name(data.get("playerName")),
+        }
+        sessions[token] = player
+    elif data.get("playerName"):
+        player["name"] = clean_player_name(data.get("playerName"))
+
+    return jsonify({
+        "sessionToken": token,
+        "player": player,
+    })
 
 @app.get("/api/lobbies/public")
 def public_lobbies():
@@ -40,13 +65,13 @@ def public_lobbies():
 def create_lobby():
     data = request.get_json(silent=True) or {}
     visibility = data.get("visibility")
-    player = clean_player(data)
+    player = player_from_request(data)
 
     if visibility not in {"public", "private"}:
         return jsonify({"error": "Choose public or private."}), 400
 
-    if not player["id"]:
-        return jsonify({"error": "Missing player id."}), 400
+    if not player:
+        return jsonify({"error": "Invalid session."}), 401
 
     code = make_lobby_code()
     lobby = {
@@ -65,15 +90,15 @@ def create_lobby():
 @app.post("/api/lobbies/join")
 def join_lobby():
     data = request.get_json(silent=True) or {}
-    code = str(data.get("code", "")).strip()
-    player = clean_player(data)
+    code = clean_lobby_code(data.get("code"))
+    player = player_from_request(data)
     lobby = lobbies.get(code)
 
     if not lobby:
         return jsonify({"error": "Lobby not found."}), 404
 
-    if not player["id"]:
-        return jsonify({"error": "Missing player id."}), 400
+    if not player:
+        return jsonify({"error": "Invalid session."}), 401
 
     if player["id"] not in [existing["id"] for existing in lobby["players"]]:
         if lobby["status"] != "waiting":
@@ -99,11 +124,15 @@ def get_lobby(code):
 def start_lobby(code):
     data = request.get_json(silent=True) or {}
     lobby = lobbies.get(code)
+    player = player_from_request(data)
 
     if not lobby:
         return jsonify({"error": "Lobby not found."}), 404
 
-    if str(data.get("playerId", "")).strip() != lobby["hostId"]:
+    if not player:
+        return jsonify({"error": "Invalid session."}), 401
+
+    if player["id"] != lobby["hostId"]:
         return jsonify({"error": "Only the host can start the game."}), 403
 
     if lobby["status"] != "waiting":
@@ -127,7 +156,7 @@ def start_lobby(code):
 def submit_guess(code):
     data = request.get_json(silent=True) or {}
     lobby = lobbies.get(code)
-    player_id = str(data.get("playerId", "")).strip()
+    player = player_from_request(data)
 
     if not lobby:
         return jsonify({"error": "Lobby not found."}), 404
@@ -135,24 +164,40 @@ def submit_guess(code):
     if lobby["status"] not in {"playing", "finished"}:
         return jsonify({"error": "This game has not started."}), 400
 
-    if player_id not in [player["id"] for player in lobby["players"]]:
+    if not player:
+        return jsonify({"error": "Invalid session."}), 401
+
+    player_id = player["id"]
+
+    if player_id not in [existing["id"] for existing in lobby["players"]]:
         return jsonify({"error": "Player is not in this lobby."}), 403
 
     submissions = lobby["submissions"].setdefault(player_id, [])
 
     try:
         round_index = int(data.get("roundIndex", -1))
-        distance = max(float(data.get("distance", 0)), 0)
+        guess_lat = float(data.get("guessLat"))
+        guess_lng = float(data.get("guessLng"))
         seconds = max(float(data.get("seconds", 0)), 0)
-        score = max(int(data.get("score", 0)), 0)
     except (TypeError, ValueError):
         return jsonify({"error": "Invalid guess submission."}), 400
 
     if round_index != len(submissions) or round_index >= MATCH_ROUNDS:
         return jsonify({"error": "Round submission is out of order."}), 400
 
+    answer = lobby["rounds"][round_index]
+    distance = get_distance_in_miles(
+        guess_lat,
+        guess_lng,
+        float(answer["lat"]),
+        float(answer["lng"]),
+    )
+    score = get_score(distance, seconds)
+
     submissions.append({
         "roundIndex": round_index,
+        "guessLat": guess_lat,
+        "guessLng": guess_lng,
         "distance": distance,
         "seconds": seconds,
         "score": score,
@@ -168,19 +213,56 @@ def load_locations():
         return json.load(file)
 
 def make_lobby_code():
+    alphabet = string.ascii_uppercase + string.digits
     while True:
-        code = "".join(random.choices(string.digits, k=7))
+        code = "".join(secrets.choice(alphabet) for _ in range(LOBBY_CODE_LENGTH))
         if code not in lobbies:
             return code
 
-def clean_player(data):
-    player_id = str(data.get("playerId", "")).strip()[:80]
-    player_name = str(data.get("playerName", "Player")).strip()[:30] or "Player"
+def clean_lobby_code(code):
+    allowed = string.ascii_uppercase + string.digits
+    normalized = str(code or "").strip().upper().replace("-", "")
 
-    return {
-        "id": player_id,
-        "name": player_name,
-    }
+    return "".join(character for character in normalized if character in allowed)[:LOBBY_CODE_LENGTH]
+
+def clean_player_name(name):
+    return str(name or "Player").strip()[:30] or "Player"
+
+def player_from_request(data):
+    token = str(data.get("sessionToken", "")).strip()
+    return sessions.get(token)
+
+def get_distance_in_miles(lat1, lng1, lat2, lng2):
+    earth_radius_miles = 3958.8
+    d_lat = math.radians(lat2 - lat1)
+    d_lng = math.radians(lng2 - lng1)
+    a = (
+        math.sin(d_lat / 2) ** 2
+        + math.cos(math.radians(lat1))
+        * math.cos(math.radians(lat2))
+        * math.sin(d_lng / 2) ** 2
+    )
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    return earth_radius_miles * c
+
+def get_score(distance, seconds):
+    speed_bonus = max(0, round(80 * (1 - min(seconds, 60) / 60)))
+
+    return get_distance_points(distance) + speed_bonus
+
+def get_distance_points(distance):
+    if distance < 0.25:
+        return 100
+    if distance < 0.5:
+        return 80
+    if distance < 1:
+        return 60
+    if distance < 2:
+        return 40
+    if distance < 5:
+        return 20
+    return 5
 
 def lobby_summary(lobby):
     progress = []
@@ -197,6 +279,7 @@ def lobby_summary(lobby):
             "totalSeconds": round(total_seconds, 1),
             "averageDistance": round(total_distance / len(submissions), 2) if submissions else None,
             "finished": len(submissions) >= MATCH_ROUNDS,
+            "submissions": submissions,
         })
 
     return {

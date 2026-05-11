@@ -54,9 +54,9 @@ let totalScore = 0;
 let totalDistance = 0;
 let gameStarted = false;
 let playerFinished = false;
-
-const playerId = getOrCreatePlayerId();
-const playerName = getOrCreatePlayerName();
+let sessionToken = null;
+let playerId = null;
+let playerName = null;
 
 const guessIcon = L.divIcon({
     className: "guess-marker",
@@ -72,17 +72,6 @@ const answerIcon = L.divIcon({
     iconAnchor: [12, 12]
 });
 
-function getOrCreatePlayerId() {
-    let id = localStorage.getItem("chigridPlayerId");
-
-    if (!id) {
-        id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
-        localStorage.setItem("chigridPlayerId", id);
-    }
-
-    return id;
-}
-
 function getOrCreatePlayerName() {
     let name = localStorage.getItem("chigridPlayerName");
 
@@ -92,6 +81,19 @@ function getOrCreatePlayerName() {
     }
 
     return name;
+}
+
+async function initializeSession() {
+    const session = await postJson("/api/session", {
+        sessionToken: localStorage.getItem("chigridSessionToken"),
+        playerName: getOrCreatePlayerName()
+    });
+
+    sessionToken = session.sessionToken;
+    playerId = session.player.id;
+    playerName = session.player.name;
+    localStorage.setItem("chigridSessionToken", sessionToken);
+    localStorage.setItem("chigridPlayerName", playerName);
 }
 
 function showLobbyView(view) {
@@ -106,8 +108,7 @@ function showLobbyView(view) {
 async function createLobby(visibility) {
     const lobby = await postJson("/api/lobbies", {
         visibility,
-        playerId,
-        playerName
+        sessionToken
     });
 
     enterLobby(lobby);
@@ -140,7 +141,7 @@ async function loadPublicLobbies() {
 }
 
 async function joinLobby(code) {
-    const cleanCode = String(code).replace(/\D/g, "").slice(0, 7);
+    const cleanCode = String(code).toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7);
 
     if (cleanCode.length !== 7) {
         setLobbyMessage("Enter a 7 digit private code.");
@@ -149,8 +150,7 @@ async function joinLobby(code) {
 
     const lobby = await postJson("/api/lobbies/join", {
         code: cleanCode,
-        playerId,
-        playerName
+        sessionToken
     });
 
     enterLobby(lobby);
@@ -160,7 +160,7 @@ async function startLobbyGame() {
     if (!currentLobby) return;
 
     const lobby = await postJson(`/api/lobbies/${currentLobby.code}/start`, {
-        playerId
+        sessionToken
     });
 
     renderLobby(lobby);
@@ -291,9 +291,7 @@ async function handleMapClick(event) {
     const guessLatLng = event.latlng;
     const answerLatLng = L.latLng(Number(currentLocation.lat), Number(currentLocation.lng));
     const distance = getDistanceInMiles(guessLatLng.lat, guessLatLng.lng, answerLatLng.lat, answerLatLng.lng);
-    const roundScore = getScore(distance, seconds);
 
-    totalScore += roundScore;
     totalDistance += distance;
 
     guessMarker = L.marker(guessLatLng, { icon: guessIcon })
@@ -317,18 +315,24 @@ async function handleMapClick(event) {
     });
 
     updateStats();
-    showRoundResult(distance, seconds, roundScore);
-    elements.nextButton.disabled = false;
+    elements.result.textContent = "Submitting guess...";
 
     try {
         const lobby = await postJson(`/api/lobbies/${currentLobby.code}/submit`, {
-            playerId,
+            sessionToken,
             roundIndex: currentRoundIndex,
-            distance,
-            seconds,
-            score: roundScore
+            guessLat: guessLatLng.lat,
+            guessLng: guessLatLng.lng,
+            seconds
         });
+        const myProgress = lobby.progress.find((player) => player.id === playerId);
+        const submittedRound = myProgress.submissions[myProgress.submissions.length - 1];
+
+        totalScore = myProgress.totalScore;
+        showRoundResult(submittedRound.distance, submittedRound.seconds, submittedRound.score);
+        updateStats();
         renderLobby(lobby);
+        elements.nextButton.disabled = false;
     } catch (error) {
         elements.result.textContent = error.message;
         console.error(error);
@@ -393,22 +397,6 @@ function getDistanceInMiles(lat1, lng1, lat2, lng2) {
 
 function toRadians(degrees) {
     return degrees * (Math.PI / 180);
-}
-
-function getScore(distance, seconds) {
-    const distancePoints = getDistancePoints(distance);
-    const speedBonus = Math.max(0, Math.round(80 * (1 - Math.min(seconds, 60) / 60)));
-
-    return distancePoints + speedBonus;
-}
-
-function getDistancePoints(distance) {
-    if (distance < 0.25) return 100;
-    if (distance < 0.5) return 80;
-    if (distance < 1) return 60;
-    if (distance < 2) return 40;
-    if (distance < 5) return 20;
-    return 5;
 }
 
 function updateStats() {
@@ -479,4 +467,9 @@ elements.joinPrivate.addEventListener("click", () => joinLobby(elements.privateC
 elements.startGame.addEventListener("click", () => startLobbyGame().catch((error) => setLobbyMessage(error.message)));
 document.querySelectorAll("[data-back]").forEach((button) => {
     button.addEventListener("click", () => showLobbyView(document.getElementById(button.dataset.back)));
+});
+
+initializeSession().catch((error) => {
+    setLobbyMessage("Could not create a player session. Refresh the page.");
+    console.error(error);
 });

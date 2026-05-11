@@ -14,6 +14,8 @@ Starting with Chicago, the project combines interactive maps, neighborhoods, lan
 - Host-controlled "Let's Go" start.
 - 20 shared locations per match.
 - Players who finish early wait until everyone completes all 20.
+- Server-issued player sessions for lobby actions.
+- Server-side distance and score calculation.
 - Distance scoring uses the haversine formula in miles.
 - Speed bonus rewards faster correct guesses.
 
@@ -150,6 +152,7 @@ Keep `min_machines_running = 1` and `auto_stop_machines = false` for multiplayer
 
 - Flask serves the main page at `/`.
 - Flask serves the landmark dataset at `/api/locations`.
+- Flask issues browser sessions at `/api/session`.
 - Flask keeps lightweight public/private lobbies in memory while the server is running.
 - Public lobbies appear in the join list.
 - Private lobbies can be joined with a 7 digit code.
@@ -158,6 +161,7 @@ Keep `min_machines_running = 1` and `auto_stop_machines = false` for multiplayer
 - A match uses the same 20 locations for everyone in the lobby.
 - Players who finish early wait until everyone completes all 20 locations.
 - `static/game.js` handles the lobby UI, map clicks, scoring, and match flow.
+- Guess submissions send raw coordinates and time; Flask computes the official distance and score.
 - The location data lives in `data/locations.json` and is the source of truth for the game.
 
 ## CI/CD
