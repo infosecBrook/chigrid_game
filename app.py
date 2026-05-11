@@ -8,13 +8,27 @@ from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request
 
+try:
+    import redis
+except ImportError:
+    redis = None
+
 app = Flask(__name__)
 DATA_FILE = Path(__file__).parent / "data" / "locations.json"
 MAX_LOBBY_PLAYERS = 6
 MATCH_ROUNDS = 20
 LOBBY_CODE_LENGTH = 7
+SESSION_TTL_SECONDS = 60 * 60 * 24 * 30
+LOBBY_TTL_SECONDS = 60 * 60 * 12
 lobbies = {}
 sessions = {}
+redis_client = None
+
+if os.environ.get("REDIS_URL"):
+    if redis is None:
+        raise RuntimeError("REDIS_URL is set, but the redis package is not installed.")
+
+    redis_client = redis.from_url(os.environ["REDIS_URL"], decode_responses=True)
 
 @app.route("/")
 def home():
@@ -32,7 +46,7 @@ def locations():
 def create_session():
     data = request.get_json(silent=True) or {}
     token = str(data.get("sessionToken", "")).strip()
-    player = sessions.get(token)
+    player = load_session(token)
 
     if not player:
         token = secrets.token_urlsafe(32)
@@ -40,9 +54,10 @@ def create_session():
             "id": secrets.token_urlsafe(16),
             "name": clean_player_name(data.get("playerName")),
         }
-        sessions[token] = player
+        save_session(token, player)
     elif data.get("playerName"):
         player["name"] = clean_player_name(data.get("playerName"))
+        save_session(token, player)
 
     return jsonify({
         "sessionToken": token,
@@ -53,7 +68,7 @@ def create_session():
 def public_lobbies():
     return jsonify([
         lobby_summary(lobby)
-        for lobby in lobbies.values()
+        for lobby in load_lobbies()
         if (
             lobby["visibility"] == "public"
             and lobby["status"] == "waiting"
@@ -83,7 +98,7 @@ def create_lobby():
         "rounds": [],
         "submissions": {},
     }
-    lobbies[code] = lobby
+    save_lobby(lobby)
 
     return jsonify(lobby_summary(lobby))
 
@@ -92,7 +107,7 @@ def join_lobby():
     data = request.get_json(silent=True) or {}
     code = clean_lobby_code(data.get("code"))
     player = player_from_request(data)
-    lobby = lobbies.get(code)
+    lobby = load_lobby(code)
 
     if not lobby:
         return jsonify({"error": "Lobby not found."}), 404
@@ -109,11 +124,13 @@ def join_lobby():
 
         lobby["players"].append(player)
 
+    save_lobby(lobby)
+
     return jsonify(lobby_summary(lobby))
 
 @app.get("/api/lobbies/<code>")
 def get_lobby(code):
-    lobby = lobbies.get(code)
+    lobby = load_lobby(code)
 
     if not lobby:
         return jsonify({"error": "Lobby not found."}), 404
@@ -123,7 +140,7 @@ def get_lobby(code):
 @app.post("/api/lobbies/<code>/start")
 def start_lobby(code):
     data = request.get_json(silent=True) or {}
-    lobby = lobbies.get(code)
+    lobby = load_lobby(code)
     player = player_from_request(data)
 
     if not lobby:
@@ -149,13 +166,14 @@ def start_lobby(code):
     lobby["rounds"] = random.sample(playable_locations, MATCH_ROUNDS)
     lobby["status"] = "playing"
     lobby["submissions"] = {player["id"]: [] for player in lobby["players"]}
+    save_lobby(lobby)
 
     return jsonify(lobby_summary(lobby))
 
 @app.post("/api/lobbies/<code>/submit")
 def submit_guess(code):
     data = request.get_json(silent=True) or {}
-    lobby = lobbies.get(code)
+    lobby = load_lobby(code)
     player = player_from_request(data)
 
     if not lobby:
@@ -206,17 +224,77 @@ def submit_guess(code):
     if all(len(lobby["submissions"].get(player["id"], [])) >= MATCH_ROUNDS for player in lobby["players"]):
         lobby["status"] = "finished"
 
+    save_lobby(lobby)
+
     return jsonify(lobby_summary(lobby))
 
 def load_locations():
     with DATA_FILE.open() as file:
         return json.load(file)
 
+def session_key(token):
+    return f"session:{token}"
+
+def lobby_key(code):
+    return f"lobby:{code}"
+
+def load_session(token):
+    if not token:
+        return None
+
+    if redis_client:
+        raw_session = redis_client.get(session_key(token))
+        if not raw_session:
+            return None
+
+        redis_client.expire(session_key(token), SESSION_TTL_SECONDS)
+        return json.loads(raw_session)
+
+    return sessions.get(token)
+
+def save_session(token, player):
+    if redis_client:
+        redis_client.setex(session_key(token), SESSION_TTL_SECONDS, json.dumps(player))
+        return
+
+    sessions[token] = player
+
+def load_lobby(code):
+    clean_code = clean_lobby_code(code)
+
+    if redis_client:
+        raw_lobby = redis_client.get(lobby_key(clean_code))
+        if not raw_lobby:
+            return None
+
+        redis_client.expire(lobby_key(clean_code), LOBBY_TTL_SECONDS)
+        return json.loads(raw_lobby)
+
+    return lobbies.get(clean_code)
+
+def save_lobby(lobby):
+    if redis_client:
+        redis_client.setex(lobby_key(lobby["code"]), LOBBY_TTL_SECONDS, json.dumps(lobby))
+        return
+
+    lobbies[lobby["code"]] = lobby
+
+def load_lobbies():
+    if redis_client:
+        loaded_lobbies = []
+        for key in redis_client.scan_iter("lobby:*"):
+            raw_lobby = redis_client.get(key)
+            if raw_lobby:
+                loaded_lobbies.append(json.loads(raw_lobby))
+        return loaded_lobbies
+
+    return list(lobbies.values())
+
 def make_lobby_code():
     alphabet = string.ascii_uppercase + string.digits
     while True:
         code = "".join(secrets.choice(alphabet) for _ in range(LOBBY_CODE_LENGTH))
-        if code not in lobbies:
+        if not load_lobby(code):
             return code
 
 def clean_lobby_code(code):
@@ -230,7 +308,7 @@ def clean_player_name(name):
 
 def player_from_request(data):
     token = str(data.get("sessionToken", "")).strip()
-    return sessions.get(token)
+    return load_session(token)
 
 def get_distance_in_miles(lat1, lng1, lat2, lng2):
     earth_radius_miles = 3958.8

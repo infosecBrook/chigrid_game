@@ -16,6 +16,7 @@ Starting with Chicago, the project combines interactive maps, neighborhoods, lan
 - Players who finish early wait until everyone completes all 20.
 - Server-issued player sessions for lobby actions.
 - Server-side distance and score calculation.
+- Redis-backed sessions and lobbies when `REDIS_URL` is configured.
 - Distance scoring uses the haversine formula in miles.
 - Speed bonus rewards faster correct guesses.
 
@@ -92,6 +93,8 @@ For people outside your home network, you need one of these:
 
 Keep one Python process running for a game session. Lobbies are stored in memory, so they reset when the server restarts.
 
+When `REDIS_URL` is set, sessions and lobbies are stored in Redis instead of local memory.
+
 ## Deploy On Render
 
 This repo includes:
@@ -102,6 +105,7 @@ This repo includes:
 - `Dockerfile` for Docker-based hosts such as Fly.io.
 - `fly.example.toml` for a low-cost Fly.io setup.
 - `/healthz` for host health checks.
+- Optional `REDIS_URL` support for shared lobby/session storage.
 
 Recommended Render settings if you create the service manually:
 
@@ -114,7 +118,7 @@ Health check path: /healthz
 
 The included `start.sh` runs the same Gunicorn command and prints the port on startup.
 
-Use one Gunicorn worker because ChiGrid currently stores lobbies in app memory. Multiple workers would create separate lobby lists.
+Use one Gunicorn worker if `REDIS_URL` is not set because local memory would create separate lobby lists. With Redis configured, sessions and lobbies can survive web app restarts and can be shared across workers.
 
 Cheapest practical choice:
 
@@ -153,7 +157,7 @@ Keep `min_machines_running = 1` and `auto_stop_machines = false` for multiplayer
 - Flask serves the main page at `/`.
 - Flask serves the landmark dataset at `/api/locations`.
 - Flask issues browser sessions at `/api/session`.
-- Flask keeps lightweight public/private lobbies in memory while the server is running.
+- Flask stores lightweight public/private lobbies in Redis when `REDIS_URL` is configured, otherwise in local memory.
 - Public lobbies appear in the join list.
 - Private lobbies can be joined with a 7 digit code.
 - Each lobby allows up to 6 players.
