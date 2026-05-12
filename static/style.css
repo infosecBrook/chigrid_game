@@ -274,7 +274,7 @@ h2 {
 
 dl {
     display: grid;
-    grid-template-columns: 96px 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 6px 10px;
     margin: 0;
 }
@@ -286,6 +286,12 @@ dt {
 
 dd {
     margin: 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+.result-panel dt:not(:first-of-type) {
+    margin-top: 8px;
 }
 
 button {
