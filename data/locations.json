@@ -6,7 +6,7 @@
     "streets": "Addison & Clark",
     "lat": 41.9484,
     "lng": -87.6553,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Wrigley_Field_marquee_2022.jpg/640px-Wrigley_Field_marquee_2022.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Wrigley_Field_in_line_with_sign.jpg/960px-Wrigley_Field_in_line_with_sign.jpg"
   },
   {
     "name": "United Center",
@@ -15,7 +15,7 @@
     "streets": "Madison & Damen",
     "lat": 41.8807,
     "lng": -87.6742,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/United_Center_2014.jpg/640px-United_Center_2014.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/United_Center_1.jpg/960px-United_Center_1.jpg"
   },
   {
     "name": "Soldier Field",
@@ -24,7 +24,7 @@
     "streets": "Museum Campus Dr & McFetridge Dr",
     "lat": 41.8623,
     "lng": -87.6167,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Soldier_Field_aerial.jpg/640px-Soldier_Field_aerial.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Soldier_Field_S.jpg/960px-Soldier_Field_S.jpg"
   },
   {
     "name": "Guaranteed Rate Field",
@@ -33,7 +33,7 @@
     "streets": "35th & Shields",
     "lat": 41.83,
     "lng": -87.6338,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Guaranteed_Rate_Field_2016.jpg/640px-Guaranteed_Rate_Field_2016.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Chicago%2C_Illinois%2C_U.S._%282023%29_-_062.jpg/960px-Chicago%2C_Illinois%2C_U.S._%282023%29_-_062.jpg"
   },
   {
     "name": "The Chicago Theatre",
@@ -42,7 +42,7 @@
     "streets": "State & Lake",
     "lat": 41.8855,
     "lng": -87.6272,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Chicago_Theatre_blend.jpg/640px-Chicago_Theatre_blend.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Chicago_Theatre_blend.jpg/960px-Chicago_Theatre_blend.jpg"
   },
   {
     "name": "Art Institute of Chicago",
@@ -51,7 +51,7 @@
     "streets": "Michigan & Adams",
     "lat": 41.8796,
     "lng": -87.6237,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Art_Institute_of_Chicago_2016.jpg/640px-Art_Institute_of_Chicago_2016.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Art_Institute_of_Chicago_Logo.png"
   },
   {
     "name": "Navy Pier",
@@ -60,7 +60,7 @@
     "streets": "Grand & Navy Pier",
     "lat": 41.8917,
     "lng": -87.6078,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Navy_Pier_from_Lake_Michigan.jpg/640px-Navy_Pier_from_Lake_Michigan.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Navy_Pier_1190x1585_%28cropped%29.jpg/960px-Navy_Pier_1190x1585_%28cropped%29.jpg"
   },
   {
     "name": "Cloud Gate",
@@ -68,8 +68,7 @@
     "neighborhood": "Loop",
     "streets": "Michigan & Randolph",
     "lat": 41.8827,
-    "lng": -87.6233,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Cloud_Gate_%28The_Bean%29_from_east%27.jpg/640px-Cloud_Gate_%28The_Bean%29_from_east%27.jpg"
+    "lng": -87.6233
   },
   {
     "name": "Willis Tower Skydeck",
@@ -78,7 +77,7 @@
     "streets": "233 S Wacker Dr",
     "lat": 41.8785,
     "lng": -87.6359,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Willis_Tower_From_Lake.jpg/640px-Willis_Tower_From_Lake.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Sears_Tower%2C_Wacker_Drive_and_Jackson_Boulevard%2C_Chicago%2C_IL_-_54189600901.jpg/960px-Sears_Tower%2C_Wacker_Drive_and_Jackson_Boulevard%2C_Chicago%2C_IL_-_54189600901.jpg"
   },
   {
     "name": "360 Chicago",
@@ -95,7 +94,7 @@
     "streets": "1400 S DuSable Lake Shore Dr",
     "lat": 41.8663,
     "lng": -87.617,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Field_Museum_of_Natural_History.jpg/640px-Field_Museum_of_Natural_History.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Field_Museum_N.jpg/960px-Field_Museum_N.jpg"
   },
   {
     "name": "Shedd Aquarium",
@@ -104,7 +103,7 @@
     "streets": "1200 S DuSable Lake Shore Dr",
     "lat": 41.8676,
     "lng": -87.614,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Shedd_Aquarium_Chicago.jpg/640px-Shedd_Aquarium_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Shedd_Aquarium_E.jpg/960px-Shedd_Aquarium_E.jpg"
   },
   {
     "name": "Adler Planetarium",
@@ -113,7 +112,7 @@
     "streets": "1300 S DuSable Lake Shore Dr",
     "lat": 41.8663,
     "lng": -87.6068,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Adler_Planetarium_Chicago.jpg/640px-Adler_Planetarium_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Adler_Planetarium_E.jpg/960px-Adler_Planetarium_E.jpg"
   },
   {
     "name": "Museum of Science and Industry",
@@ -122,7 +121,7 @@
     "streets": "57th & Cornell",
     "lat": 41.7906,
     "lng": -87.5831,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Museum_of_Science_and_Industry_Chicago.jpg/640px-Museum_of_Science_and_Industry_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Museum_of_Science_and_Industry_%28Chicago%29.jpg/960px-Museum_of_Science_and_Industry_%28Chicago%29.jpg"
   },
   {
     "name": "Lincoln Park Zoo",
@@ -131,7 +130,7 @@
     "streets": "Cannon Dr & Fullerton Pkwy",
     "lat": 41.9211,
     "lng": -87.6337,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Lincoln_Park_Zoo_entrance.jpg/640px-Lincoln_Park_Zoo_entrance.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Lincoln_Park_Zoo%2C_Chicago.jpg/960px-Lincoln_Park_Zoo%2C_Chicago.jpg"
   },
   {
     "name": "Millennium Park",
@@ -140,7 +139,7 @@
     "streets": "Michigan & Randolph",
     "lat": 41.8826,
     "lng": -87.6226,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Millennium_Park_Chicago.jpg/640px-Millennium_Park_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Millennium_Square%2C_Chicago%2C_Illinois_%289181701264%29.jpg/960px-Millennium_Square%2C_Chicago%2C_Illinois_%289181701264%29.jpg"
   },
   {
     "name": "Grant Park",
@@ -165,7 +164,7 @@
     "streets": "Columbus & Congress",
     "lat": 41.8758,
     "lng": -87.6189,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Buckingham_Fountain_Chicago.jpg/640px-Buckingham_Fountain_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Buckingham_Fountain_Wikivoyage.jpg/960px-Buckingham_Fountain_Wikivoyage.jpg"
   },
   {
     "name": "Chicago Cultural Center",
@@ -174,7 +173,7 @@
     "streets": "78 E Washington St",
     "lat": 41.8839,
     "lng": -87.6249,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Chicago_Cultural_Center_200708.jpg/640px-Chicago_Cultural_Center_200708.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Chicago_Cultural_Center_%2851574888388%29.jpg/960px-Chicago_Cultural_Center_%2851574888388%29.jpg"
   },
   {
     "name": "Harold Washington Library Center",
@@ -183,7 +182,7 @@
     "streets": "State & Van Buren",
     "lat": 41.8763,
     "lng": -87.6282,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Harold_Washington_Library_Chicago.jpg/640px-Harold_Washington_Library_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Harold_Washington_Library%2C_Chicago%2C_Illinois_%289181548762%29.jpg/960px-Harold_Washington_Library%2C_Chicago%2C_Illinois_%289181548762%29.jpg"
   },
   {
     "name": "Frederick C. Robie House",
@@ -192,7 +191,7 @@
     "streets": "5757 S Woodlawn Ave",
     "lat": 41.7898,
     "lng": -87.5957,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Robie_House.jpg/640px-Robie_House.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Frederick_C._Robie_House.JPG/960px-Frederick_C._Robie_House.JPG"
   },
   {
     "name": "Promontory Point",
@@ -209,7 +208,7 @@
     "streets": "Broadway & Lawrence",
     "lat": 41.9692,
     "lng": -87.6599,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Green_Mill_Cocktail_Lounge.jpg/640px-Green_Mill_Cocktail_Lounge.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Green_Mill_Cocktail_Lounge_exterior.jpg/960px-Green_Mill_Cocktail_Lounge_exterior.jpg"
   },
   {
     "name": "The Second City",
@@ -218,7 +217,7 @@
     "streets": "Wells & North Ave",
     "lat": 41.9116,
     "lng": -87.6349,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/The_Second_City_Chicago.jpg/640px-The_Second_City_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/The_Second_City%2C_Main_Stage.jpg/960px-The_Second_City%2C_Main_Stage.jpg"
   },
   {
     "name": "Kingston Mines",
@@ -251,7 +250,7 @@
     "streets": "18th & Allport",
     "lat": 41.8575,
     "lng": -87.664,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Thalia_Hall_Chicago.jpg/640px-Thalia_Hall_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Thalia_Hall.jpg"
   },
   {
     "name": "Music Box Theatre",
@@ -260,7 +259,7 @@
     "streets": "Southport & Grace",
     "lat": 41.9499,
     "lng": -87.6639,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Music_Box_Theatre_Chicago.jpg/640px-Music_Box_Theatre_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Music_Box_Theatre_-_Chicago%2C_Illinois%2C_2015.jpg/960px-Music_Box_Theatre_-_Chicago%2C_Illinois%2C_2015.jpg"
   },
   {
     "name": "Logan Theatre",
@@ -405,7 +404,7 @@
     "streets": "Cermak & Wentworth",
     "lat": 41.8529,
     "lng": -87.6324,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Chicago_Chinatown_Gate.jpg/640px-Chicago_Chinatown_Gate.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Chinatown_Chicago_Gate.jpg/960px-Chinatown_Chicago_Gate.jpg"
   },
   {
     "name": "Ping Tom Memorial Park",
@@ -470,7 +469,7 @@
     "streets": "300 N Central Park Ave",
     "lat": 41.8863,
     "lng": -87.7165,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Garfield_Park_Conservatory.jpg/640px-Garfield_Park_Conservatory.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Garfield_Park_Conservatory%2C_aerial_view.jpg"
   },
   {
     "name": "Jackson Park Japanese Garden",
@@ -511,7 +510,7 @@
     "streets": "11141 S Cottage Grove Ave",
     "lat": 41.6929,
     "lng": -87.6079,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Pullman_Administration_Building.jpg/640px-Pullman_Administration_Building.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Pullman_Chicago_Clock_Tower.jpg"
   },
   {
     "name": "Glessner House",
@@ -536,7 +535,7 @@
     "streets": "1601 N Clark St",
     "lat": 41.912,
     "lng": -87.6317,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Chicago_History_Museum.jpg/640px-Chicago_History_Museum.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Chicago_History.JPG/960px-Chicago_History.JPG"
   },
   {
     "name": "Peggy Notebaert Nature Museum",
@@ -553,7 +552,7 @@
     "streets": "1852 W 19th St",
     "lat": 41.8561,
     "lng": -87.6728,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/National_Museum_of_Mexican_Art.jpg/640px-National_Museum_of_Mexican_Art.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/National_Museum_of_Mexican_Art_entrance.jpg/960px-National_Museum_of_Mexican_Art_entrance.jpg"
   },
   {
     "name": "DuSable Black History Museum",
@@ -594,7 +593,7 @@
     "streets": "Michigan & Wacker",
     "lat": 41.8884,
     "lng": -87.6247,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/DuSable_Bridge_Chicago.jpg/640px-DuSable_Bridge_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Michigan_Ave_Bridge_20100912.jpg/960px-Michigan_Ave_Bridge_20100912.jpg"
   },
   {
     "name": "Merchandise Mart",
@@ -603,7 +602,7 @@
     "streets": "222 W Merchandise Mart Plaza",
     "lat": 41.8886,
     "lng": -87.6354,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Merchandise_Mart_2007.jpg/640px-Merchandise_Mart_2007.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Merchandise_Mart_080405.jpg/960px-Merchandise_Mart_080405.jpg"
   },
   {
     "name": "Chicago Union Station",
@@ -612,7 +611,7 @@
     "streets": "Canal & Jackson",
     "lat": 41.8787,
     "lng": -87.64,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Chicago_Union_Station_Entrance.jpg/640px-Chicago_Union_Station_Entrance.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Chicago_Union_Station.jpg/960px-Chicago_Union_Station.jpg"
   },
   {
     "name": "Ogilvie Transportation Center",
@@ -637,7 +636,7 @@
     "streets": "Dearborn & Washington",
     "lat": 41.8841,
     "lng": -87.6302,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Chicago_Picasso.jpg/640px-Chicago_Picasso.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/2004-09-07_1800x2400_chicago_picasso.jpg/960px-2004-09-07_1800x2400_chicago_picasso.jpg"
   },
   {
     "name": "Civic Opera House",
@@ -646,7 +645,7 @@
     "streets": "20 N Wacker Dr",
     "lat": 41.8826,
     "lng": -87.6376,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Civic_Opera_House_Chicago.jpg/640px-Civic_Opera_House_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Lyric_Opera_of_Chicago_interior.jpg/960px-Lyric_Opera_of_Chicago_interior.jpg"
   },
   {
     "name": "Symphony Center",
@@ -719,7 +718,7 @@
     "streets": "806 N Michigan Ave",
     "lat": 41.8972,
     "lng": -87.6241,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Chicago_Water_Tower_2013.jpg/640px-Chicago_Water_Tower_2013.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/The_Chicago_Water_Tower.jpg/960px-The_Chicago_Water_Tower.jpg"
   },
   {
     "name": "Water Tower Place",
@@ -736,7 +735,7 @@
     "streets": "435 N Michigan Ave",
     "lat": 41.8904,
     "lng": -87.6237,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Tribune_Tower_Chicago.jpg/640px-Tribune_Tower_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Tribune_Tower%2C_Chicago%2C_Illinois_%289181667444%29_%28cropped%29.jpg/960px-Tribune_Tower%2C_Chicago%2C_Illinois_%289181667444%29_%28cropped%29.jpg"
   },
   {
     "name": "Wrigley Building",
@@ -745,7 +744,7 @@
     "streets": "400 N Michigan Ave",
     "lat": 41.8899,
     "lng": -87.6244,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Wrigley_Building_Chicago.jpg/640px-Wrigley_Building_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Wrigley_Building_1_%2831887261212%29.jpg/960px-Wrigley_Building_1_%2831887261212%29.jpg"
   },
   {
     "name": "Marina City",
@@ -754,7 +753,7 @@
     "streets": "300 N State St",
     "lat": 41.888,
     "lng": -87.6286,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Marina_City_Chicago.jpg/640px-Marina_City_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Marina_City%2C_Chicago%2C_Illinois%2C_Estados_Unidos%2C_2012-10-20%2C_DD_01.jpg/960px-Marina_City%2C_Chicago%2C_Illinois%2C_Estados_Unidos%2C_2012-10-20%2C_DD_01.jpg"
   },
   {
     "name": "Chicago Riverwalk",
@@ -891,7 +890,7 @@
     "streets": "220 E Chicago Ave",
     "lat": 41.8972,
     "lng": -87.6215,
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Museum_of_Contemporary_Art_Chicago.jpg/640px-Museum_of_Contemporary_Art_Chicago.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/MCA_Chicago_060930.jpg/960px-MCA_Chicago_060930.jpg"
   },
   {
     "name": "American Writers Museum",

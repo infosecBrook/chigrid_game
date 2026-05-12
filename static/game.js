@@ -491,6 +491,13 @@ elements.createPublic.addEventListener("click", () => createLobby("public").catc
 elements.createPrivate.addEventListener("click", () => createLobby("private").catch((error) => setLobbyMessage(error.message)));
 elements.joinPrivate.addEventListener("click", () => joinLobby(elements.privateCode.value).catch((error) => setLobbyMessage(error.message)));
 elements.startGame.addEventListener("click", () => startLobbyGame().catch((error) => setLobbyMessage(error.message)));
+elements.photoClue.addEventListener("error", () => {
+    elements.photoClue.classList.add("hidden");
+    setPhotoMessage("Photo clue could not load for this location.");
+});
+elements.photoClue.addEventListener("load", () => {
+    setPhotoMessage("");
+});
 document.querySelectorAll("[data-back]").forEach((button) => {
     button.addEventListener("click", () => showLobbyView(document.getElementById(button.dataset.back)));
 });
