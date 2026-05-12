@@ -1,6 +1,9 @@
 const chicagoCenter = [41.8781, -87.6298];
 
 const map = L.map("map").setView(chicagoCenter, 11);
+map.createPane("boundaryPane");
+map.getPane("boundaryPane").style.zIndex = 450;
+map.getPane("boundaryPane").style.pointerEvents = "none";
 
 const guessingLayer = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
     maxZoom: 19,
@@ -66,6 +69,7 @@ let playerFinished = false;
 let sessionToken = null;
 let playerId = null;
 let playerName = null;
+let chicagoBoundaryLayer = null;
 
 const guessIcon = L.divIcon({
     className: "guess-marker",
@@ -508,6 +512,7 @@ function setMapMode(mode) {
         if (!map.hasLayer(revealLayer)) {
             revealLayer.addTo(map);
         }
+        bringBoundaryToFront();
         return;
     }
 
@@ -516,6 +521,37 @@ function setMapMode(mode) {
     }
     if (!map.hasLayer(guessingLayer)) {
         guessingLayer.addTo(map);
+    }
+    bringBoundaryToFront();
+}
+
+async function loadChicagoBoundary() {
+    const response = await fetch("/api/chicago-boundary");
+
+    if (!response.ok) {
+        throw new Error("Could not load Chicago city boundary.");
+    }
+
+    const boundary = await response.json();
+
+    chicagoBoundaryLayer = L.geoJSON(boundary, {
+        pane: "boundaryPane",
+        interactive: false,
+        style: {
+            color: "#c60c30",
+            weight: 4,
+            opacity: 0.95,
+            fill: false,
+            dashArray: "8 6"
+        }
+    }).addTo(map);
+
+    bringBoundaryToFront();
+}
+
+function bringBoundaryToFront() {
+    if (chicagoBoundaryLayer) {
+        chicagoBoundaryLayer.bringToFront();
     }
 }
 
@@ -537,6 +573,7 @@ function escapeHtml(value) {
 }
 
 map.on("click", handleMapClick);
+loadChicagoBoundary().catch((error) => console.error(error));
 elements.nextButton.addEventListener("click", goToNextRound);
 elements.showCreate.addEventListener("click", () => showLobbyView(elements.createView));
 elements.showJoin.addEventListener("click", () => {

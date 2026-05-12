@@ -7,6 +7,7 @@ Starting with Chicago, the project combines interactive maps, neighborhoods, lan
 ## Current Features
 
 - Interactive Chicago map.
+- Official Chicago city boundary overlay.
 - 200-location Chicago landmark dataset.
 - Public and private multiplayer lobbies.
 - Private lobbies use a 7 digit join code.
@@ -159,6 +160,7 @@ Keep `min_machines_running = 1` and `auto_stop_machines = false` for multiplayer
 
 - Flask serves the main page at `/`.
 - Flask serves the landmark dataset at `/api/locations`.
+- Flask serves the cached City of Chicago boundary GeoJSON at `/api/chicago-boundary`.
 - Flask issues browser sessions at `/api/session`.
 - Flask stores lightweight public/private lobbies in Redis when `REDIS_URL` is configured, otherwise in local memory.
 - Public lobbies appear in the join list.
@@ -171,6 +173,7 @@ Keep `min_machines_running = 1` and `auto_stop_machines = false` for multiplayer
 - Guess submissions send raw coordinates and time; Flask computes the official distance and score.
 - When a location has `image_url`, each target shows a photo clue in the top-right panel.
 - The location data lives in `data/locations.json` and is the source of truth for the game.
+- The Chicago boundary data lives in `data/chicago_boundary.geojson` and is cached from the City of Chicago Data Portal.
 
 ## CI/CD
 

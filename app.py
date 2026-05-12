@@ -15,6 +15,7 @@ except ImportError:
 
 app = Flask(__name__)
 DATA_FILE = Path(__file__).parent / "data" / "locations.json"
+BOUNDARY_FILE = Path(__file__).parent / "data" / "chicago_boundary.geojson"
 MAX_LOBBY_PLAYERS = 6
 MATCH_ROUNDS = 20
 LOBBY_CODE_LENGTH = 7
@@ -41,6 +42,11 @@ def healthz():
 @app.route("/api/locations")
 def locations():
     return jsonify(load_locations())
+
+@app.get("/api/chicago-boundary")
+def chicago_boundary():
+    with BOUNDARY_FILE.open() as file:
+        return jsonify(json.load(file))
 
 @app.post("/api/session")
 def create_session():
