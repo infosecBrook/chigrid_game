@@ -155,10 +155,15 @@ def start_lobby(code):
     if lobby["status"] != "waiting":
         return jsonify(lobby_summary(lobby))
 
-    playable_locations = [
+    all_playable_locations = [
         location for location in load_locations()
         if location.get("name") and location.get("lat") is not None and location.get("lng") is not None
     ]
+    photo_locations = [
+        location for location in all_playable_locations
+        if location.get("image_url") or location.get("imageUrl")
+    ]
+    playable_locations = photo_locations if len(photo_locations) >= MATCH_ROUNDS else all_playable_locations
 
     if len(playable_locations) < MATCH_ROUNDS:
         return jsonify({"error": "Not enough locations to start a match."}), 400

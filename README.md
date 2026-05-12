@@ -18,6 +18,7 @@ Starting with Chicago, the project combines interactive maps, neighborhoods, lan
 - Server-side distance and score calculation.
 - Redis-backed sessions and lobbies when `REDIS_URL` is configured.
 - Optional photo clue panel using `image_url` values in the location dataset.
+- Match generation prefers locations with photo clues when at least 20 are available.
 - Distance scoring uses the haversine formula in miles.
 - Speed bonus rewards faster correct guesses.
 
