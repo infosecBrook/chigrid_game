@@ -2,10 +2,15 @@ const chicagoCenter = [41.8781, -87.6298];
 
 const map = L.map("map").setView(chicagoCenter, 11);
 
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+const guessingLayer = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
     maxZoom: 19,
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
 }).addTo(map);
+
+const revealLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap contributors"
+});
 
 const elements = {
     lobbyScreen: document.getElementById("lobby-screen"),
@@ -269,6 +274,7 @@ function launchMatch(lobby) {
 
 function startRound(index) {
     clearRoundMarkers();
+    setMapMode("guessing");
 
     currentRoundIndex = index;
     currentLocation = matchRounds[currentRoundIndex];
@@ -356,6 +362,7 @@ async function handleMapClick(event) {
 
         totalScore = myProgress.totalScore;
         showRoundResult(submittedRound.distance, submittedRound.seconds, submittedRound.score);
+        setMapMode("reveal");
         updateStats();
         renderLobby(lobby);
         elements.nextButton.disabled = false;
@@ -461,6 +468,25 @@ function clearRoundMarkers() {
     guessMarker = null;
     answerMarker = null;
     answerLine = null;
+}
+
+function setMapMode(mode) {
+    if (mode === "reveal") {
+        if (map.hasLayer(guessingLayer)) {
+            map.removeLayer(guessingLayer);
+        }
+        if (!map.hasLayer(revealLayer)) {
+            revealLayer.addTo(map);
+        }
+        return;
+    }
+
+    if (map.hasLayer(revealLayer)) {
+        map.removeLayer(revealLayer);
+    }
+    if (!map.hasLayer(guessingLayer)) {
+        guessingLayer.addTo(map);
+    }
 }
 
 function capitalize(value) {
