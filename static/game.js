@@ -43,6 +43,9 @@ const elements = {
     category: document.getElementById("category"),
     lineInfo: document.getElementById("line-info"),
     result: document.getElementById("result"),
+    guessActions: document.getElementById("guess-actions"),
+    confirmGuess: document.getElementById("confirm-guess"),
+    cancelGuess: document.getElementById("cancel-guess"),
     nextButton: document.getElementById("next-location"),
     totalScore: document.getElementById("total-score"),
     roundsPlayed: document.getElementById("rounds-played"),
@@ -59,6 +62,7 @@ let currentLocation = null;
 let currentRoundIndex = 0;
 let roundStartedAt = 0;
 let canGuess = false;
+let pendingGuessLatLng = null;
 let guessMarker = null;
 let answerMarker = null;
 let answerLine = null;
@@ -284,12 +288,14 @@ function startRound(index) {
     currentRoundIndex = index;
     currentLocation = matchRounds[currentRoundIndex];
     canGuess = true;
+    pendingGuessLatLng = null;
     roundStartedAt = performance.now();
 
     elements.prompt.textContent = `Find: ${currentLocation.name}`;
     elements.category.textContent = `Category: ${currentLocation.category || "Unknown"}`;
     renderLineInfo(currentLocation);
     elements.result.textContent = "Click the map where you think this is.";
+    hideGuessActions();
     elements.nextButton.disabled = true;
     elements.nextButton.textContent = currentRoundIndex === matchRounds.length - 1 ? "Finish Match" : "Next Location";
     updateStats();
@@ -323,36 +329,31 @@ async function handleMapClick(event) {
         return;
     }
 
-    canGuess = false;
+    pendingGuessLatLng = event.latlng;
+
+    if (guessMarker) {
+        guessMarker.setLatLng(pendingGuessLatLng);
+    } else {
+        guessMarker = L.marker(pendingGuessLatLng, { icon: guessIcon })
+            .addTo(map)
+            .bindPopup("Your guess");
+    }
+
+    elements.result.textContent = "Confirm this spot, or cancel and choose again.";
+    showGuessActions();
+}
+
+async function confirmGuess() {
+    if (!canGuess || !currentLocation || !pendingGuessLatLng) {
+        return;
+    }
 
     const seconds = (performance.now() - roundStartedAt) / 1000;
-    const guessLatLng = event.latlng;
+    const guessLatLng = pendingGuessLatLng;
     const answerLatLng = L.latLng(Number(currentLocation.lat), Number(currentLocation.lng));
-    const distance = getDistanceInMiles(guessLatLng.lat, guessLatLng.lng, answerLatLng.lat, answerLatLng.lng);
 
-    totalDistance += distance;
-
-    guessMarker = L.marker(guessLatLng, { icon: guessIcon })
-        .addTo(map)
-        .bindPopup("Your guess");
-
-    answerMarker = L.marker(answerLatLng, { icon: answerIcon })
-        .addTo(map)
-        .bindPopup(currentLocation.name);
-
-    answerLine = L.polyline([guessLatLng, answerLatLng], {
-        color: "#00a1de",
-        weight: 4,
-        opacity: 0.85,
-        dashArray: "8 8"
-    }).addTo(map);
-
-    map.fitBounds(answerLine.getBounds(), {
-        padding: [80, 80],
-        maxZoom: 14
-    });
-
-    updateStats();
+    canGuess = false;
+    hideGuessActions();
     elements.result.textContent = "Submitting guess...";
 
     try {
@@ -367,6 +368,24 @@ async function handleMapClick(event) {
         const submittedRound = myProgress.submissions[myProgress.submissions.length - 1];
 
         totalScore = myProgress.totalScore;
+        totalDistance += submittedRound.distance;
+
+        answerMarker = L.marker(answerLatLng, { icon: answerIcon })
+            .addTo(map)
+            .bindPopup(currentLocation.name);
+
+        answerLine = L.polyline([guessLatLng, answerLatLng], {
+            color: "#00a1de",
+            weight: 4,
+            opacity: 0.85,
+            dashArray: "8 8"
+        }).addTo(map);
+
+        map.fitBounds(answerLine.getBounds(), {
+            padding: [80, 80],
+            maxZoom: 14
+        });
+
         showRoundResult(submittedRound.distance, submittedRound.seconds, submittedRound.score);
         setMapMode("reveal");
         updateStats();
@@ -374,8 +393,26 @@ async function handleMapClick(event) {
         elements.nextButton.disabled = false;
     } catch (error) {
         elements.result.textContent = error.message;
+        canGuess = true;
+        showGuessActions();
         console.error(error);
     }
+}
+
+function cancelGuess() {
+    if (!canGuess) {
+        return;
+    }
+
+    pendingGuessLatLng = null;
+
+    if (guessMarker) {
+        map.removeLayer(guessMarker);
+        guessMarker = null;
+    }
+
+    elements.result.textContent = "Click the map where you think this is.";
+    hideGuessActions();
 }
 
 function goToNextRound() {
@@ -499,9 +536,18 @@ function clearRoundMarkers() {
         }
     });
 
+    pendingGuessLatLng = null;
     guessMarker = null;
     answerMarker = null;
     answerLine = null;
+}
+
+function showGuessActions() {
+    elements.guessActions.classList.remove("hidden");
+}
+
+function hideGuessActions() {
+    elements.guessActions.classList.add("hidden");
 }
 
 function setMapMode(mode) {
@@ -574,6 +620,8 @@ function escapeHtml(value) {
 
 map.on("click", handleMapClick);
 loadChicagoBoundary().catch((error) => console.error(error));
+elements.confirmGuess.addEventListener("click", () => confirmGuess().catch((error) => console.error(error)));
+elements.cancelGuess.addEventListener("click", cancelGuess);
 elements.nextButton.addEventListener("click", goToNextRound);
 elements.showCreate.addEventListener("click", () => showLobbyView(elements.createView));
 elements.showJoin.addEventListener("click", () => {
