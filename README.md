@@ -17,7 +17,7 @@ Starting with Chicago, the project combines interactive maps, neighborhoods, lan
 - Server-issued player sessions for lobby actions.
 - Server-side distance and score calculation.
 - Redis-backed sessions and lobbies when `REDIS_URL` is configured.
-- Optional Google Street View clue panel when `GOOGLE_MAPS_API_KEY` is configured.
+- Optional photo clue panel using `image_url` values in the location dataset.
 - Distance scoring uses the haversine formula in miles.
 - Speed bonus rewards faster correct guesses.
 
@@ -107,7 +107,7 @@ This repo includes:
 - `fly.example.toml` for a low-cost Fly.io setup.
 - `/healthz` for host health checks.
 - Optional `REDIS_URL` support for shared lobby/session storage.
-- Optional `GOOGLE_MAPS_API_KEY` support for the Street View clue panel.
+- Optional `image_url` values in `data/locations.json` for photo clues.
 
 Recommended Render settings if you create the service manually:
 
@@ -168,7 +168,7 @@ Keep `min_machines_running = 1` and `auto_stop_machines = false` for multiplayer
 - Players who finish early wait until everyone completes all 20 locations.
 - `static/game.js` handles the lobby UI, map clicks, scoring, and match flow.
 - Guess submissions send raw coordinates and time; Flask computes the official distance and score.
-- When `GOOGLE_MAPS_API_KEY` is set, each target shows a locked Street View panorama that can rotate but cannot move down the street.
+- When a location has `image_url`, each target shows a photo clue in the top-right panel.
 - The location data lives in `data/locations.json` and is the source of truth for the game.
 
 ## CI/CD

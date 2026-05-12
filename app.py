@@ -32,10 +32,7 @@ if os.environ.get("REDIS_URL"):
 
 @app.route("/")
 def home():
-    return render_template(
-        "index.html",
-        google_maps_api_key=os.environ.get("GOOGLE_MAPS_API_KEY", ""),
-    )
+    return render_template("index.html")
 
 @app.get("/healthz")
 def healthz():
