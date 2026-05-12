@@ -37,7 +37,10 @@ const elements = {
     nextButton: document.getElementById("next-location"),
     totalScore: document.getElementById("total-score"),
     roundsPlayed: document.getElementById("rounds-played"),
-    averageDistance: document.getElementById("average-distance")
+    averageDistance: document.getElementById("average-distance"),
+    streetViewPanel: document.getElementById("streetview-panel"),
+    streetViewPano: document.getElementById("streetview-pano"),
+    streetViewMessage: document.getElementById("streetview-message")
 };
 
 let currentLobby = null;
@@ -57,6 +60,9 @@ let playerFinished = false;
 let sessionToken = null;
 let playerId = null;
 let playerName = null;
+let streetViewService = null;
+let streetViewPanorama = null;
+let streetViewReady = false;
 
 const guessIcon = L.divIcon({
     className: "guess-marker",
@@ -82,6 +88,30 @@ function getOrCreatePlayerName() {
 
     return name;
 }
+
+window.initStreetView = function initStreetView() {
+    streetViewService = new google.maps.StreetViewService();
+    streetViewPanorama = new google.maps.StreetViewPanorama(elements.streetViewPano, {
+        addressControl: false,
+        clickToGo: false,
+        disableDefaultUI: false,
+        fullscreenControl: false,
+        linksControl: false,
+        motionTracking: false,
+        motionTrackingControl: false,
+        panControl: true,
+        scrollwheel: false,
+        showRoadLabels: false,
+        visible: false,
+        zoomControl: true
+    });
+    streetViewReady = true;
+    elements.streetViewPanel.classList.add("streetview-ready");
+
+    if (currentLocation) {
+        updateStreetView(currentLocation);
+    }
+};
 
 async function initializeSession() {
     const session = await postJson("/api/session", {
@@ -278,6 +308,69 @@ function startRound(index) {
     elements.nextButton.disabled = true;
     elements.nextButton.textContent = currentRoundIndex === matchRounds.length - 1 ? "Finish Match" : "Next Location";
     updateStats();
+    updateStreetView(currentLocation);
+}
+
+function updateStreetView(location) {
+    if (!window.googleMapsEnabled) {
+        setStreetViewMessage("Add GOOGLE_MAPS_API_KEY in Railway to enable this clue.");
+        return;
+    }
+
+    if (!streetViewReady || !streetViewService || !streetViewPanorama) {
+        setStreetViewMessage("Loading Street View...");
+        return;
+    }
+
+    const target = {
+        lat: Number(location.lat),
+        lng: Number(location.lng)
+    };
+
+    setStreetViewMessage("Finding nearby Street View...");
+    streetViewPanorama.setVisible(false);
+
+    streetViewService.getPanorama({
+        location: target,
+        radius: 100,
+        source: google.maps.StreetViewSource.OUTDOOR
+    }).then((response) => {
+        const panoLocation = response.data.location.latLng;
+        const heading = getHeading(
+            panoLocation.lat(),
+            panoLocation.lng(),
+            target.lat,
+            target.lng
+        );
+
+        streetViewPanorama.setPano(response.data.location.pano);
+        streetViewPanorama.setPov({
+            heading,
+            pitch: 0
+        });
+        streetViewPanorama.setZoom(0);
+        streetViewPanorama.setVisible(true);
+        setStreetViewMessage("");
+    }).catch(() => {
+        setStreetViewMessage("No nearby Street View found for this location.");
+    });
+}
+
+function setStreetViewMessage(message) {
+    elements.streetViewMessage.textContent = message;
+    elements.streetViewMessage.classList.toggle("hidden", !message);
+}
+
+function getHeading(fromLat, fromLng, toLat, toLng) {
+    const fromLatRad = toRadians(fromLat);
+    const toLatRad = toRadians(toLat);
+    const lngDiffRad = toRadians(toLng - fromLng);
+    const y = Math.sin(lngDiffRad) * Math.cos(toLatRad);
+    const x =
+        Math.cos(fromLatRad) * Math.sin(toLatRad) -
+        Math.sin(fromLatRad) * Math.cos(toLatRad) * Math.cos(lngDiffRad);
+
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
 }
 
 async function handleMapClick(event) {

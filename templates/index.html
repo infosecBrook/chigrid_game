@@ -96,9 +96,24 @@
         <button id="next-location" type="button" disabled>Next Location</button>
     </div>
 
+    <aside id="streetview-panel" class="streetview-panel">
+        <div class="streetview-header">
+            <span>Street View</span>
+            <small>Rotate only</small>
+        </div>
+        <div id="streetview-pano"></div>
+        <p id="streetview-message">Street View preview needs a Google Maps API key.</p>
+    </aside>
+
     <div id="map"></div>
 
+    <script>
+        window.googleMapsEnabled = {{ "true" if google_maps_api_key else "false" }};
+    </script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="{{ url_for('static', filename='game.js') }}"></script>
+    {% if google_maps_api_key %}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initStreetView"></script>
+    {% endif %}
 </body>
 </html>

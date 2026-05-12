@@ -29,6 +29,54 @@ body {
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
+.streetview-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 360px;
+    max-width: calc(100vw - 380px);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: #121820;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.streetview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f7fafc;
+    font-weight: 700;
+}
+
+.streetview-header small {
+    color: #9ad8ff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#streetview-pano {
+    height: 230px;
+    background: #202b36;
+}
+
+#streetview-message {
+    margin: 0;
+    padding: 12px;
+    color: #cbd5df;
+    line-height: 1.4;
+}
+
+.streetview-ready #streetview-message.hidden {
+    display: none;
+}
+
 .screen-overlay {
     position: fixed;
     inset: 0;
@@ -313,5 +361,18 @@ button:disabled {
 
     .stats-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .streetview-panel {
+        top: auto;
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        width: auto;
+        max-width: none;
+    }
+
+    #streetview-pano {
+        height: 180px;
     }
 }
