@@ -1222,11 +1222,23 @@
   },
   {
     "name": "Belmont Station",
-    "category": "CTA/Metra station",
+    "category": "CTA station",
     "neighborhood": "Lakeview",
-    "streets": "945 West Belmont Avenue",
-    "lat": 41.9397786,
-    "lng": -87.653334
+    "streets": "Belmont & Sheffield",
+    "lat": 41.9398,
+    "lng": -87.6533,
+    "lines": [
+      "Red Line",
+      "Brown Line",
+      "Purple Line"
+    ],
+    "line_colors": [
+      "#c60c30",
+      "#62361b",
+      "#522398"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Belmont_station_July_2019.jpg/960px-Belmont_station_July_2019.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
   },
   {
     "name": "Armitage Station",
@@ -1238,11 +1250,19 @@
   },
   {
     "name": "UIC-Halsted Station",
-    "category": "CTA/Metra station",
-    "neighborhood": "West Loop",
-    "streets": "430 South Halsted Street",
-    "lat": 41.8754875,
-    "lng": -87.6496998
+    "category": "CTA station",
+    "neighborhood": "Little Italy",
+    "streets": "Halsted & Harrison",
+    "lat": 41.8755,
+    "lng": -87.6497,
+    "lines": [
+      "Blue Line"
+    ],
+    "line_colors": [
+      "#00a1de"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Platform_at_UIC-Halsted%2C_looking_east.jpg/960px-Platform_at_UIC-Halsted%2C_looking_east.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
   },
   {
     "name": "Racine Station",
@@ -1318,11 +1338,25 @@
   },
   {
     "name": "Quincy Station",
-    "category": "CTA/Metra station",
+    "category": "CTA station",
     "neighborhood": "Loop",
-    "streets": "220 South Wells Street",
-    "lat": 41.8787419,
-    "lng": -87.6337584
+    "streets": "Quincy & Wells",
+    "lat": 41.8787,
+    "lng": -87.6337,
+    "lines": [
+      "Brown Line",
+      "Orange Line",
+      "Pink Line",
+      "Purple Line"
+    ],
+    "line_colors": [
+      "#62361b",
+      "#f9461c",
+      "#e27ea6",
+      "#522398"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Quincy_CTA.jpg/960px-Quincy_CTA.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
   },
   {
     "name": "LaSalle/Van Buren Station",
@@ -1342,11 +1376,29 @@
   },
   {
     "name": "Clark/Lake Station",
-    "category": "CTA/Metra station",
+    "category": "CTA station",
     "neighborhood": "Loop",
-    "streets": "100-124 West Lake Street",
-    "lat": 41.8857528,
-    "lng": -87.6313736
+    "streets": "Clark & Lake",
+    "lat": 41.8857,
+    "lng": -87.6309,
+    "lines": [
+      "Blue Line",
+      "Brown Line",
+      "Green Line",
+      "Orange Line",
+      "Pink Line",
+      "Purple Line"
+    ],
+    "line_colors": [
+      "#00a1de",
+      "#62361b",
+      "#009b3a",
+      "#f9461c",
+      "#e27ea6",
+      "#522398"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Under_the_canopy_at_Clark-Lake.jpg/960px-Under_the_canopy_at_Clark-Lake.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
   },
   {
     "name": "Ashland Station",
@@ -1358,11 +1410,19 @@
   },
   {
     "name": "35th-Bronzeville-IIT Station",
-    "category": "CTA/Metra station",
+    "category": "CTA station",
     "neighborhood": "Bronzeville",
-    "streets": "16 East 35th Street",
-    "lat": 41.8320387,
-    "lng": -87.6258861
+    "streets": "35th & State",
+    "lat": 41.8317,
+    "lng": -87.6258,
+    "lines": [
+      "Green Line"
+    ],
+    "line_colors": [
+      "#009b3a"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Platform_at_35th-Bronzeville-IIT%2C_looking_north.jpg/960px-Platform_at_35th-Bronzeville-IIT%2C_looking_north.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
   },
   {
     "name": "Washington Station",
@@ -1374,11 +1434,23 @@
   },
   {
     "name": "Fullerton Station",
-    "category": "CTA/Metra station",
+    "category": "CTA station",
     "neighborhood": "Lincoln Park",
-    "streets": "943 West Fullerton Avenue",
-    "lat": 41.9251961,
-    "lng": -87.6528026
+    "streets": "Fullerton & Sheffield",
+    "lat": 41.9252,
+    "lng": -87.6528,
+    "lines": [
+      "Red Line",
+      "Brown Line",
+      "Purple Line"
+    ],
+    "line_colors": [
+      "#c60c30",
+      "#62361b",
+      "#522398"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/CTA_Red_Line-_Fullerton_and_Skokie.jpg/960px-CTA_Red_Line-_Fullerton_and_Skokie.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
   },
   {
     "name": "Halsted Street Station",
@@ -1635,5 +1707,407 @@
     "streets": "1329 North Milwaukee Avenue",
     "lat": 41.9061186,
     "lng": -87.6705558
+  },
+  {
+    "name": "Howard Station",
+    "category": "CTA station",
+    "neighborhood": "Rogers Park",
+    "streets": "Howard & Paulina",
+    "lat": 42.0191,
+    "lng": -87.6729,
+    "lines": [
+      "Red Line",
+      "Purple Line",
+      "Yellow Line"
+    ],
+    "line_colors": [
+      "#c60c30",
+      "#522398",
+      "#f9e300"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Northbound_platform_at_Howard.jpg/960px-Northbound_platform_at_Howard.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Loyola Red Line Station",
+    "category": "CTA station",
+    "neighborhood": "Rogers Park",
+    "streets": "Sheridan & Loyola",
+    "lat": 42.0011,
+    "lng": -87.6613,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Northbound_tracks_at_Loyola.jpg/960px-Northbound_tracks_at_Loyola.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Granville Red Line Station",
+    "category": "CTA station",
+    "neighborhood": "Edgewater",
+    "streets": "Broadway & Granville",
+    "lat": 41.9937,
+    "lng": -87.6592,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Southbound_tracks_at_Granville.jpg/960px-Southbound_tracks_at_Granville.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Wilson Station",
+    "category": "CTA station",
+    "neighborhood": "Uptown",
+    "streets": "Wilson & Broadway",
+    "lat": 41.9648,
+    "lng": -87.6579,
+    "lines": [
+      "Red Line",
+      "Purple Line"
+    ],
+    "line_colors": [
+      "#c60c30",
+      "#522398"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Center_tracks_and_southbound_platform_at_Wilson.jpg/960px-Center_tracks_and_southbound_platform_at_Wilson.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Addison Red Line Station",
+    "category": "CTA station",
+    "neighborhood": "Lakeview",
+    "streets": "Addison & Sheffield",
+    "lat": 41.9475,
+    "lng": -87.6536,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Northbound_tracks_at_Addison.jpg/960px-Northbound_tracks_at_Addison.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Clark/Division Station",
+    "category": "CTA station",
+    "neighborhood": "Near North Side",
+    "streets": "Clark & Division",
+    "lat": 41.9039,
+    "lng": -87.6314,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Platform_at_Clark-Division.jpg/960px-Platform_at_Clark-Division.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Chicago Red Line Station",
+    "category": "CTA station",
+    "neighborhood": "River North",
+    "streets": "State & Chicago",
+    "lat": 41.8967,
+    "lng": -87.6282,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Chicago_Red_Line_station_northbound_track.jpg/960px-Chicago_Red_Line_station_northbound_track.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Lake Station",
+    "category": "CTA station",
+    "neighborhood": "Loop",
+    "streets": "State & Lake",
+    "lat": 41.8845,
+    "lng": -87.6279,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Lake_station_platform%2C_December_2018.JPG/960px-Lake_station_platform%2C_December_2018.JPG",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Roosevelt Station",
+    "category": "CTA station",
+    "neighborhood": "South Loop",
+    "streets": "State & Roosevelt",
+    "lat": 41.8674,
+    "lng": -87.6266,
+    "lines": [
+      "Red Line",
+      "Green Line",
+      "Orange Line"
+    ],
+    "line_colors": [
+      "#c60c30",
+      "#009b3a",
+      "#f9461c"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Red_Line_platform_at_Roosevelt_%2851246040149%29.jpg/960px-Red_Line_platform_at_Roosevelt_%2851246040149%29.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Cermak-Chinatown Station",
+    "category": "CTA station",
+    "neighborhood": "Chinatown",
+    "streets": "Cermak & Wentworth",
+    "lat": 41.8538,
+    "lng": -87.6309,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Cermak-Chinatown.jpg/960px-Cermak-Chinatown.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Sox-35th Station",
+    "category": "CTA station",
+    "neighborhood": "Bridgeport",
+    "streets": "35th & State",
+    "lat": 41.8312,
+    "lng": -87.6306,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Sox-35th_%27L%27_Station_2023.jpg/960px-Sox-35th_%27L%27_Station_2023.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "95th/Dan Ryan Station",
+    "category": "CTA station",
+    "neighborhood": "Roseland",
+    "streets": "95th & Dan Ryan",
+    "lat": 41.7224,
+    "lng": -87.6243,
+    "lines": [
+      "Red Line"
+    ],
+    "line_colors": [
+      "#c60c30"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Aerial_view_of_95th_station%2C_October_2024.JPG/960px-Aerial_view_of_95th_station%2C_October_2024.JPG",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "O'Hare Blue Line Station",
+    "category": "CTA station",
+    "neighborhood": "O'Hare",
+    "streets": "O'Hare Airport",
+    "lat": 41.9777,
+    "lng": -87.9042,
+    "lines": [
+      "Blue Line"
+    ],
+    "line_colors": [
+      "#00a1de"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/O%27Hare_station_2018.jpg/960px-O%27Hare_station_2018.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Jefferson Park Transit Center",
+    "category": "CTA station",
+    "neighborhood": "Jefferson Park",
+    "streets": "Milwaukee & Jefferson Park",
+    "lat": 41.9706,
+    "lng": -87.7609,
+    "lines": [
+      "Blue Line"
+    ],
+    "line_colors": [
+      "#00a1de"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Main_entrance_to_Jefferson_Park_station_%2851212373139%29.jpg/960px-Main_entrance_to_Jefferson_Park_station_%2851212373139%29.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Logan Square Blue Line Station",
+    "category": "CTA station",
+    "neighborhood": "Logan Square",
+    "streets": "Kedzie & Milwaukee",
+    "lat": 41.9297,
+    "lng": -87.7085,
+    "lines": [
+      "Blue Line"
+    ],
+    "line_colors": [
+      "#00a1de"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Platform_at_Logan_Square%2C_looking_southwest_from_the_Spaulding_entrance_%2851259215200%29.jpg/960px-Platform_at_Logan_Square%2C_looking_southwest_from_the_Spaulding_entrance_%2851259215200%29.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Damen Blue Line Station",
+    "category": "CTA station",
+    "neighborhood": "Wicker Park",
+    "streets": "Damen & Milwaukee",
+    "lat": 41.9097,
+    "lng": -87.6774,
+    "lines": [
+      "Blue Line"
+    ],
+    "line_colors": [
+      "#00a1de"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Damen_Station.jpg/960px-Damen_Station.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Division Blue Line Station",
+    "category": "CTA station",
+    "neighborhood": "Wicker Park",
+    "streets": "Division & Ashland",
+    "lat": 41.9034,
+    "lng": -87.6665,
+    "lines": [
+      "Blue Line"
+    ],
+    "line_colors": [
+      "#00a1de"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Platform_at_Division%2C_looking_southeast_%2853636354811%29.jpg/960px-Platform_at_Division%2C_looking_southeast_%2853636354811%29.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "18th Pink Line Station",
+    "category": "CTA station",
+    "neighborhood": "Pilsen",
+    "streets": "18th & Paulina",
+    "lat": 41.8579,
+    "lng": -87.6691,
+    "lines": [
+      "Pink Line"
+    ],
+    "line_colors": [
+      "#e27ea6"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Platforms_at_18th_station%2C_December_2018.JPG/960px-Platforms_at_18th_station%2C_December_2018.JPG",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Cermak-McCormick Place Station",
+    "category": "CTA station",
+    "neighborhood": "South Loop",
+    "streets": "Cermak & State",
+    "lat": 41.8531,
+    "lng": -87.6264,
+    "lines": [
+      "Green Line"
+    ],
+    "line_colors": [
+      "#009b3a"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/North_end_of_Cermak-McCormick_Place_station%2C_December_2018.JPG/960px-North_end_of_Cermak-McCormick_Place_station%2C_December_2018.JPG",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "63rd Green Line Station",
+    "category": "CTA station",
+    "neighborhood": "Englewood",
+    "streets": "63rd & Wentworth",
+    "lat": 41.7805,
+    "lng": -87.6309,
+    "lines": [
+      "Green Line"
+    ],
+    "line_colors": [
+      "#009b3a"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/63rd_Street_Station.jpg/960px-63rd_Street_Station.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Washington/Wabash Station",
+    "category": "CTA station",
+    "neighborhood": "Loop",
+    "streets": "Washington & Wabash",
+    "lat": 41.8832,
+    "lng": -87.626,
+    "lines": [
+      "Brown Line",
+      "Green Line",
+      "Orange Line",
+      "Pink Line",
+      "Purple Line"
+    ],
+    "line_colors": [
+      "#62361b",
+      "#009b3a",
+      "#f9461c",
+      "#e27ea6",
+      "#522398"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Orange-Green-Purple-Pink_Line_platform_at_Washington-Wabash.jpg/960px-Orange-Green-Purple-Pink_Line_platform_at_Washington-Wabash.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Midway Orange Line Station",
+    "category": "CTA station",
+    "neighborhood": "Clearing",
+    "streets": "Midway Airport",
+    "lat": 41.7866,
+    "lng": -87.7379,
+    "lines": [
+      "Orange Line"
+    ],
+    "line_colors": [
+      "#f9461c"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Train_and_empty_track_at_Midway.jpg/960px-Train_and_empty_track_at_Midway.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Kimball Brown Line Station",
+    "category": "CTA station",
+    "neighborhood": "Albany Park",
+    "streets": "Kimball & Lawrence",
+    "lat": 41.9679,
+    "lng": -87.7131,
+    "lines": [
+      "Brown Line"
+    ],
+    "line_colors": [
+      "#62361b"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/CTA_Kimball_060723.jpg/960px-CTA_Kimball_060723.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
+  },
+  {
+    "name": "Western Brown Line Station",
+    "category": "CTA station",
+    "neighborhood": "Lincoln Square",
+    "streets": "Western & Leland",
+    "lat": 41.9662,
+    "lng": -87.6885,
+    "lines": [
+      "Brown Line"
+    ],
+    "line_colors": [
+      "#62361b"
+    ],
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Western_station.jpg/960px-Western_station.jpg",
+    "image_credit": "Wikipedia/Wikimedia Commons"
   }
 ]

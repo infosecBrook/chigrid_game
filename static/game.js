@@ -38,6 +38,7 @@ const elements = {
     matchResults: document.getElementById("match-results"),
     prompt: document.getElementById("prompt"),
     category: document.getElementById("category"),
+    lineInfo: document.getElementById("line-info"),
     result: document.getElementById("result"),
     nextButton: document.getElementById("next-location"),
     totalScore: document.getElementById("total-score"),
@@ -283,6 +284,7 @@ function startRound(index) {
 
     elements.prompt.textContent = `Find: ${currentLocation.name}`;
     elements.category.textContent = `Category: ${currentLocation.category || "Unknown"}`;
+    renderLineInfo(currentLocation);
     elements.result.textContent = "Click the map where you think this is.";
     elements.nextButton.disabled = true;
     elements.nextButton.textContent = currentRoundIndex === matchRounds.length - 1 ? "Finish Match" : "Next Location";
@@ -442,12 +444,14 @@ function updateStats() {
 }
 
 function showRoundResult(distance, seconds, roundScore) {
+    const lines = getLineText(currentLocation);
     elements.result.innerHTML = `
         <strong>${distance.toFixed(2)} miles away</strong>
         <span>${roundScore} points in ${seconds.toFixed(1)} seconds</span>
         <dl>
             <dt>Answer</dt>
             <dd>${escapeHtml(currentLocation.name)}</dd>
+            ${lines ? `<dt>Lines</dt><dd>${escapeHtml(lines)}</dd>` : ""}
             <dt>Neighborhood</dt>
             <dd>${escapeHtml(currentLocation.neighborhood || "Unknown")}</dd>
             <dt>Streets</dt>
@@ -456,6 +460,32 @@ function showRoundResult(distance, seconds, roundScore) {
             <dd>${escapeHtml(currentLocation.category || "Unknown")}</dd>
         </dl>
     `;
+}
+
+function renderLineInfo(location) {
+    const lines = Array.isArray(location.lines) ? location.lines : [];
+    const colors = Array.isArray(location.line_colors) ? location.line_colors : [];
+
+    elements.lineInfo.innerHTML = "";
+
+    if (lines.length === 0) {
+        elements.lineInfo.classList.add("hidden");
+        return;
+    }
+
+    lines.forEach((line, index) => {
+        const badge = document.createElement("span");
+        badge.className = "line-badge";
+        badge.textContent = line;
+        badge.style.setProperty("--line-color", colors[index] || "#00a1de");
+        elements.lineInfo.appendChild(badge);
+    });
+
+    elements.lineInfo.classList.remove("hidden");
+}
+
+function getLineText(location) {
+    return Array.isArray(location.lines) ? location.lines.join(", ") : "";
 }
 
 function clearRoundMarkers() {

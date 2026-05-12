@@ -212,6 +212,26 @@ h2 {
     color: #cbd5df;
 }
 
+.line-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.line-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 4px 8px;
+    border-left: 4px solid var(--line-color);
+    border-radius: 6px;
+    background: #121820;
+    color: #f7fafc;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
